@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Prog : AstNode
 
+@property (nonatomic, copy, readonly) NSArray <Statement *>*stmts;
+
 - (instancetype)initWithStmts:(NSArray <Statement *>*)stmts;
 
 @end

@@ -8,7 +8,7 @@
 #import "Prog.h"
 @interface Prog ()
 
-@property (nonatomic, copy) NSArray <Statement *>*stmts;
+@property (nonatomic, copy, readwrite) NSArray <Statement *>*stmts;
 
 @end
 // prog = (functionDecl | functionCall)* ;

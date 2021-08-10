@@ -6,7 +6,6 @@
 //
 
 #import "Parser.h"
-#import "Prog.h"
 #import "FunctionDecl.h"
 #import "FunctionCall.h"
 #import "FunctionBody.h"

@@ -12,7 +12,6 @@
 
 @property (nonatomic, copy, readwrite) NSString *name;
 @property (nonatomic, copy, readwrite) NSArray <NSString *>*parameters;
-@property (nonatomic, strong, readwrite) FunctionDecl *definition;
 
 @end
 

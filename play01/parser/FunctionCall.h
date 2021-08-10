@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FunctionCall : Statement
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSArray <NSString *>*parameters;
-@property (nonatomic, strong, readonly) FunctionDecl *definition;
+@property (nonatomic, strong, readwrite) FunctionDecl *definition;
 
 - (instancetype)initWithName:(NSString *)name
                   parameters:(NSArray <NSString *>*)parameters;

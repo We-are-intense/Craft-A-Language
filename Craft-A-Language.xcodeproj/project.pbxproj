@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4193B14226C20E8F002DE346 /* AstVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4193B14126C20E8F002DE346 /* AstVisitor.m */; };
+		4193B14726C210D8002DE346 /* RefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4193B14626C210D8002DE346 /* RefResolver.m */; };
+		4193B14C26C2146D002DE346 /* Intepretor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4193B14B26C2146D002DE346 /* Intepretor.m */; };
 		4EEB18DB26C1565C0076CED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB18DA26C1565C0076CED1 /* main.m */; };
 		4EEB18E826C156C90076CED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB18E726C156C90076CED1 /* main.m */; };
 		4EEB18EE26C159140076CED1 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB18ED26C159140076CED1 /* Token.m */; };
@@ -42,6 +45,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4193B14026C20E8F002DE346 /* AstVisitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AstVisitor.h; sourceTree = "<group>"; };
+		4193B14126C20E8F002DE346 /* AstVisitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstVisitor.m; sourceTree = "<group>"; };
+		4193B14526C210D8002DE346 /* RefResolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefResolver.h; sourceTree = "<group>"; };
+		4193B14626C210D8002DE346 /* RefResolver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefResolver.m; sourceTree = "<group>"; };
+		4193B14A26C2146D002DE346 /* Intepretor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Intepretor.h; sourceTree = "<group>"; };
+		4193B14B26C2146D002DE346 /* Intepretor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Intepretor.m; sourceTree = "<group>"; };
 		4EEB18D726C1565C0076CED1 /* Craft-A-Language */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Craft-A-Language"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EEB18DA26C1565C0076CED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EEB18E526C156C90076CED1 /* play01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = play01; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +93,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4193B13C26C20E5A002DE346 /* vistor */ = {
+			isa = PBXGroup;
+			children = (
+				4193B14026C20E8F002DE346 /* AstVisitor.h */,
+				4193B14126C20E8F002DE346 /* AstVisitor.m */,
+				4193B14526C210D8002DE346 /* RefResolver.h */,
+				4193B14626C210D8002DE346 /* RefResolver.m */,
+				4193B14A26C2146D002DE346 /* Intepretor.h */,
+				4193B14B26C2146D002DE346 /* Intepretor.m */,
+			);
+			path = vistor;
+			sourceTree = "<group>";
+		};
+		4193B13D26C20E66002DE346 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				4EEB18EC26C159140076CED1 /* Token.h */,
+				4EEB18ED26C159140076CED1 /* Token.m */,
+				4EEB18EF26C159FD0076CED1 /* Tokenizer.h */,
+				4EEB18F026C159FD0076CED1 /* Tokenizer.m */,
+				4EEB18F226C160B00076CED1 /* Parser.h */,
+				4EEB18F326C160B00076CED1 /* Parser.m */,
+				4EEB18F526C163140076CED1 /* AstNode.h */,
+				4EEB18F626C163140076CED1 /* AstNode.m */,
+				4EEB18F826C163E70076CED1 /* Statement.h */,
+				4EEB18F926C163E70076CED1 /* Statement.m */,
+				4EEB18FB26C164110076CED1 /* Prog.h */,
+				4EEB18FC26C164110076CED1 /* Prog.m */,
+				4EEB18FE26C1685F0076CED1 /* FunctionCall.h */,
+				4EEB18FF26C1685F0076CED1 /* FunctionCall.m */,
+				4EEB190126C169690076CED1 /* FunctionDecl.h */,
+				4EEB190226C169690076CED1 /* FunctionDecl.m */,
+				4EEB190426C16A300076CED1 /* FunctionBody.h */,
+				4EEB190526C16A300076CED1 /* FunctionBody.m */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
 		4EEB18CE26C1565C0076CED1 = {
 			isa = PBXGroup;
 			children = (
@@ -113,25 +160,9 @@
 		4EEB18E626C156C90076CED1 /* play01 */ = {
 			isa = PBXGroup;
 			children = (
+				4193B13D26C20E66002DE346 /* parser */,
+				4193B13C26C20E5A002DE346 /* vistor */,
 				4EEB18E726C156C90076CED1 /* main.m */,
-				4EEB18EC26C159140076CED1 /* Token.h */,
-				4EEB18ED26C159140076CED1 /* Token.m */,
-				4EEB18EF26C159FD0076CED1 /* Tokenizer.h */,
-				4EEB18F026C159FD0076CED1 /* Tokenizer.m */,
-				4EEB18F226C160B00076CED1 /* Parser.h */,
-				4EEB18F326C160B00076CED1 /* Parser.m */,
-				4EEB18F526C163140076CED1 /* AstNode.h */,
-				4EEB18F626C163140076CED1 /* AstNode.m */,
-				4EEB18F826C163E70076CED1 /* Statement.h */,
-				4EEB18F926C163E70076CED1 /* Statement.m */,
-				4EEB18FB26C164110076CED1 /* Prog.h */,
-				4EEB18FC26C164110076CED1 /* Prog.m */,
-				4EEB18FE26C1685F0076CED1 /* FunctionCall.h */,
-				4EEB18FF26C1685F0076CED1 /* FunctionCall.m */,
-				4EEB190126C169690076CED1 /* FunctionDecl.h */,
-				4EEB190226C169690076CED1 /* FunctionDecl.m */,
-				4EEB190426C16A300076CED1 /* FunctionBody.h */,
-				4EEB190526C16A300076CED1 /* FunctionBody.m */,
 			);
 			path = play01;
 			sourceTree = "<group>";
@@ -222,12 +253,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EEB18F426C160B00076CED1 /* Parser.m in Sources */,
+				4193B14226C20E8F002DE346 /* AstVisitor.m in Sources */,
 				4EEB18F126C159FD0076CED1 /* Tokenizer.m in Sources */,
+				4193B14726C210D8002DE346 /* RefResolver.m in Sources */,
 				4EEB18E826C156C90076CED1 /* main.m in Sources */,
 				4EEB190026C1685F0076CED1 /* FunctionCall.m in Sources */,
 				4EEB18EE26C159140076CED1 /* Token.m in Sources */,
 				4EEB18F726C163140076CED1 /* AstNode.m in Sources */,
 				4EEB190326C169690076CED1 /* FunctionDecl.m in Sources */,
+				4193B14C26C2146D002DE346 /* Intepretor.m in Sources */,
 				4EEB18FA26C163E70076CED1 /* Statement.m in Sources */,
 				4EEB18FD26C164110076CED1 /* Prog.m in Sources */,
 				4EEB190626C16A300076CED1 /* FunctionBody.m in Sources */,
@@ -354,6 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29J22D29N7;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -364,6 +399,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29J22D29N7;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -374,6 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29J22D29N7;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -384,6 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29J22D29N7;
 				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
