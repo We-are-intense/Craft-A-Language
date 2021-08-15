@@ -29,11 +29,7 @@
     self = [super init];
     if (self) {
         _stream = stream;
-<<<<<<< HEAD
         _nextToken = [Token createWithKind:TokenKindEOF text:@""];
-=======
-        _nextToken = [Token createWithKind:End text:@""];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     return self;
 }
@@ -41,11 +37,7 @@
 
 - (Token *)next {
     // 在第一次的时候，先parse一个Token
-<<<<<<< HEAD
     if (self.nextToken.kind == TokenKindEOF && !self.stream.eof) {
-=======
-    if (self.nextToken.kind == End && !self.stream.eof) {
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
         self.nextToken = [self getAToken];
     }
     
@@ -57,11 +49,7 @@
 
 - (Token *)peek {
     // 在第一次的时候，先parse一个Token
-<<<<<<< HEAD
     if (self.nextToken.kind == TokenKindEOF && !self.stream.eof) {
-=======
-    if (self.nextToken.kind == End && !self.stream.eof) {
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
         self.nextToken = [self getAToken];
     }
     return self.nextToken;
@@ -75,11 +63,7 @@
     [self skipWhiteSpaces];
     
     if (self.stream.eof) {
-<<<<<<< HEAD
         return [Token createWithKind:TokenKindEOF text:@""];
-=======
-        return [Token createWithKind:End text:@""];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     
     unichar ch = self.stream.peek;
@@ -94,11 +78,7 @@
     if (ch == '(' || ch == ')' || ch == '{' ||
         ch == '}' || ch == ';' || ch == ',') {
         [self.stream next];
-<<<<<<< HEAD
         return [Token createWithKind:TokenKindSeperator text:[NSString stringWithFormat:@"%c",ch]];
-=======
-        return [Token createWithKind:Seperator text:[NSString stringWithFormat:@"%c",ch]];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     
     if (ch == '/') {
@@ -118,17 +98,10 @@
         
         if (ch1 == '=') {
             [self.stream next];
-<<<<<<< HEAD
             return [Token createWithKind:TokenKindOperator text:@"/="];
         }
         
         return [Token createWithKind:TokenKindOperator text:@"/"];
-=======
-            return [Token createWithKind:Operator text:@"/="];
-        }
-        
-        return [Token createWithKind:Operator text:@"/"];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     
     if (ch == '+') {
@@ -136,7 +109,6 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '+') {
             [self.stream next];
-<<<<<<< HEAD
             return [Token createWithKind:TokenKindOperator text:@"++"];
         }
         if (ch1 == '=') {
@@ -144,22 +116,12 @@
             return [Token createWithKind:TokenKindOperator text:@"+="];
         }
         return [Token createWithKind:TokenKindOperator text:@"+"];
-=======
-            return [Token createWithKind:Operator text:@"++"];
-        }
-        if (ch1 == '=') {
-            [self.stream next];
-            return [Token createWithKind:Operator text:@"+="];
-        }
-        return [Token createWithKind:Operator text:@"+"];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     if (ch == '-') {
         [self.stream next];
         unichar ch1 = self.stream.peek;
         if (ch1 == '-') {
             [self.stream next];
-<<<<<<< HEAD
             return [Token createWithKind:TokenKindOperator text:@"--"];
         }
         if (ch1 == '=') {
@@ -167,15 +129,6 @@
             return [Token createWithKind:TokenKindOperator text:@"-="];
         }
         return [Token createWithKind:TokenKindOperator text:@"-"];
-=======
-            return [Token createWithKind:Operator text:@"--"];
-        }
-        if (ch1 == '=') {
-            [self.stream next];
-            return [Token createWithKind:Operator text:@"-="];
-        }
-        return [Token createWithKind:Operator text:@"-"];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     
     if (ch == '*') {
@@ -183,15 +136,9 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-<<<<<<< HEAD
             return [Token createWithKind:TokenKindOperator text:@"*="];
         }
         return [Token createWithKind:TokenKindOperator text:@"*"];
-=======
-            return [Token createWithKind:Operator text:@"*="];
-        }
-        return [Token createWithKind:Operator text:@"*"];
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     // 暂时去掉不能识别的字符
     NSLog(@"Unrecognized pattern meeting line: %ld col: %ld", self.stream.line, self.stream.col);
@@ -200,11 +147,7 @@
 }
 #pragma mark 解析标识符。从标识符中还要挑出关键字。
 - (Token *)parseIdentifer {
-<<<<<<< HEAD
     TokenKind kind = TokenKindIdentifier;
-=======
-    TokenKind kind = Identifier;
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     NSString *text = @"";
     // 第一个字符不用判断，因为在调用者那里已经判断过了
     text = [text stringByAppendingFormat:@"%c", self.stream.next];
@@ -215,21 +158,13 @@
     }
     // 识别出关键字
     if ([text isEqualToString:@"function"]) {
-<<<<<<< HEAD
         kind = TokenKindKeyword;
-=======
-        kind = Keyword;
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     }
     return [Token createWithKind:kind text:text];;
 }
 #pragma mark 解析标识符。从标识符中还要挑出关键字。
 - (Token *)parseStringLiteral {
-<<<<<<< HEAD
     TokenKind kind = TokenKindStringLiteral;
-=======
-    TokenKind kind = StringLiteral;
->>>>>>> 2aad05b9243fd2696bc1ebc337d10c4cbbcd88b0
     NSString *text = @"";
     // 第一个字符不用判断，因为在调用者那里已经判断过了
     text = [text stringByAppendingFormat:@"%c", self.stream.next];

@@ -6,12 +6,15 @@
 //
 
 #import "AstVisitor.h"
+#import "SymTable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RefResolver : AstVisitor
 
-@property (nonatomic, strong, readonly) Prog *prog;
+@property (nonatomic, strong, readonly) SymTable *symTable;
+
+- (instancetype)initWithSymTable:(SymTable *)symTable;
 
 @end
 

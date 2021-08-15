@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Variable : Expression
 @property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong, readonly) VariableDecl *decl;
+@property (nonatomic, strong, nullable) VariableDecl *decl;
 
 - (instancetype)initWithName:(NSString *)name;
 @end

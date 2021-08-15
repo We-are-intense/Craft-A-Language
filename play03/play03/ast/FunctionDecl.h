@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) Block *body;
 
-- (instancetype)initWithName:(NSString *)name body:(Block *)body;
+- (instancetype)initWithName:(NSString *)name body:(Block * _Nullable)body;
 
 @end
 

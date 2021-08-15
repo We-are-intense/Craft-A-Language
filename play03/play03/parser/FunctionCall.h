@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) FunctionDecl *decl;
 
 - (instancetype)initWithName:(NSString *)name
-                  parameters:(NSArray <Expression *>*)parameters;
+                  parameters:( NSArray <Expression *> * _Nullable )parameters;
 
 @end
 

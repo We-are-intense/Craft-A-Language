@@ -23,6 +23,10 @@
     return self;
 }
 
+- (id)accept:(AstVisitor *)visitor {
+    return [visitor visitFunctionDecl:self];
+}
+
 - (void)dump:(NSString *)prefix {
     NSLog(@"%@FunctionDecl%@",prefix, self.name);
     [self.body dump:[NSString stringWithFormat:@"%@\t", prefix]];

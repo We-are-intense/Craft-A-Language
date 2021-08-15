@@ -7,6 +7,11 @@
 
 #import "SymTable.h"
 
+@interface SymTable ()
+@property (nonatomic, strong, readwrite) NSMutableDictionary <NSString *, Symbol *> *table;
+
+@end
+
 @implementation SymTable
 - (instancetype)init
 {
@@ -17,5 +22,18 @@
     return self;
 }
 
+
+- (void)enterWithName:(NSString *)name
+                 decl:(Decl *)decl
+              symType:(SymKind)symType {
+    self.table[name] = [[Symbol alloc] initWithName:name decl:decl kind:symType];
+}
+
+- (BOOL)hasSymbolWithName:(NSString *)name {
+    return self.table[name] != nil;
+}
+- (Symbol *)getSymbolWithName:(NSString *)name {
+    return self.table[name];
+}
 
 @end

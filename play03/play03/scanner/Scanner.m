@@ -6,7 +6,6 @@
 //
 
 #import "Scanner.h"
-#import "NSMutableArray+GetSafe.h"
 
 @interface Scanner ()
 
@@ -26,7 +25,7 @@
 }
 
 - (Token *)next {
-    Token *t = self.tokens.shift;
+    Token *t = [self tokenShift];
     if (t == nil) {
         return [self getAToken];
     } else {
@@ -35,7 +34,7 @@
 }
 
 - (Token *)peek {
-    Token *t = self.tokens[0];
+    Token *t = [self tokenAtIndex:0];
     if (t == nil) {
         t = [self getAToken];
         NSAssert(t, @"peek token 不能为 nil");
@@ -45,15 +44,17 @@
 }
 
 - (Token *)peek2 {
-    Token *t = self.tokens[1];
+    Token *t = [self tokenAtIndex:1];
     while (t == nil) {
         Token *t1 = [self getAToken];
         NSAssert(t1, @"peek2 token 不能为 nil");
         [self.tokens addObject:t1];
-        t = self.tokens[1];
+        t = [self tokenAtIndex:1];
     }
     return t;
 }
+
+
 
 #pragma mark - private methods
 #pragma mark 从字符串流中获取一个新Token
@@ -484,6 +485,24 @@
     });
     return set;
 }
+#pragma mark 数组 util methods
+- (Token *)tokenAtIndex:(NSInteger)idx {
+    if (self.tokens.count == 0) {
+        return nil;
+    }
+    
+    if (idx >= self.tokens.count || idx < 0) {
+        return nil;
+    }
+    return [self.tokens objectAtIndex:idx];
+}
 
-
+- (Token *)tokenShift {
+    if (self.tokens.count == 0) {
+        return nil;
+    }
+    id obj = self.tokens.firstObject;
+    [self.tokens removeObjectAtIndex:0];
+    return obj;
+}
 @end

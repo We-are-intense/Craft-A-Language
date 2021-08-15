@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Symbol.h"
+#import "Decl.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSMutableDictionary <NSString *, Symbol *> *table;
 
+- (void)enterWithName:(NSString *)name decl:(Decl *)decl symType:(SymKind)symType;
 
+- (BOOL)hasSymbolWithName:(NSString *)name;
+- (Symbol *)getSymbolWithName:(NSString *)name;
 
 @end
 

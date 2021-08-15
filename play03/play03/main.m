@@ -6,11 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Tokenizer.h"
 #import "Parser.h"
-//#import "RefResolver.h"
+#import "RefResolver.h"
 #import "Intepretor.h"
 #import "CharStream.h"
+#import "SymTable.h"
+#import "Enter.h"
+
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -28,17 +31,22 @@ int main(int argc, const char * argv[]) {
         }
         CharStream *stream = [[CharStream alloc] initWithData:program];
         // 词法分析
-//        Tokenizer *tokenizer = [[Tokenizer alloc] initWithStream:stream];
-//        Parser *parser = [[Parser alloc] initWithTokenizer:tokenizer];
-//        // 语法分析
-//        Prog *prog = [parser parseProg];
-//        // 语义分析
-//        [[RefResolver new] visitProg:prog];
-//
-//        // 运行程序
-//        id retVal = [[Intepretor new] visitProg:prog];
-//
-//        NSLog(@"--------------- %@", retVal);
+        Scanner *tokenizer = [[Scanner alloc] initWithStream:stream];
+        Parser *parser = [[Parser alloc] initWithScanner:tokenizer];
+        
+        
+        // 语法分析
+        Prog *prog = [parser parseProg];
+        SymTable *symTable =SymTable.new;
+        // 建立符号表
+        [[Enter new] visit:prog];
+        // 引用消解
+        [[[RefResolver alloc] initWithSymTable:symTable] visit:prog];
+        
+        // 运行程序
+        id retVal = [[Intepretor new] visitProg:prog];
+
+        NSLog(@"--------------- %@", retVal);
     }
     return 0;
 }
