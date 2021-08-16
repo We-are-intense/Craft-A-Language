@@ -19,7 +19,6 @@
 		4EFCE8A726C6A214005A1425 /* AstNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE89626C6A214005A1425 /* AstNode.m */; };
 		4EFCE8A826C6A214005A1425 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE89A26C6A214005A1425 /* Parser.m */; };
 		4EFCE8A926C6A214005A1425 /* FunctionBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE89B26C6A214005A1425 /* FunctionBody.m */; };
-		4EFCE8AB26C6A214005A1425 /* Tokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE89F26C6A214005A1425 /* Tokenizer.m */; };
 		4EFCE8AC26C6A214005A1425 /* FunctionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE8A026C6A214005A1425 /* FunctionCall.m */; };
 		4EFCE8AE26C6A214005A1425 /* Prog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE8A426C6A214005A1425 /* Prog.m */; };
 		4EFCE8C926C6A353005A1425 /* VariableDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE8B126C6A352005A1425 /* VariableDecl.m */; };
@@ -80,10 +79,8 @@
 		4EFCE89A26C6A214005A1425 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		4EFCE89B26C6A214005A1425 /* FunctionBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBody.m; sourceTree = "<group>"; };
 		4EFCE89C26C6A214005A1425 /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
-		4EFCE89F26C6A214005A1425 /* Tokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tokenizer.m; sourceTree = "<group>"; };
 		4EFCE8A026C6A214005A1425 /* FunctionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionCall.m; sourceTree = "<group>"; };
 		4EFCE8A226C6A214005A1425 /* AstNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstNode.h; sourceTree = "<group>"; };
-		4EFCE8A326C6A214005A1425 /* Tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tokenizer.h; sourceTree = "<group>"; };
 		4EFCE8A426C6A214005A1425 /* Prog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog.m; sourceTree = "<group>"; };
 		4EFCE8AF26C6A352005A1425 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		4EFCE8B026C6A352005A1425 /* FunctionDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionDecl.h; sourceTree = "<group>"; };
@@ -211,8 +208,6 @@
 				4EFCE8A426C6A214005A1425 /* Prog.m */,
 				4EFCE89C26C6A214005A1425 /* Statement.h */,
 				4EFCE89326C6A213005A1425 /* Statement.m */,
-				4EFCE8A326C6A214005A1425 /* Tokenizer.h */,
-				4EFCE89F26C6A214005A1425 /* Tokenizer.m */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -334,7 +329,6 @@
 				4EFCE8D326C6A353005A1425 /* FunctionDecl.m in Sources */,
 				4EFCE8D026C6A353005A1425 /* NullLiteral.m in Sources */,
 				4EFCE8D526C6A353005A1425 /* Expression.m in Sources */,
-				4EFCE8AB26C6A214005A1425 /* Tokenizer.m in Sources */,
 				4EFCE8AC26C6A214005A1425 /* FunctionCall.m in Sources */,
 				4EFCE8D426C6A353005A1425 /* Variable.m in Sources */,
 				4EFCE8CA26C6A353005A1425 /* Binary.m in Sources */,
@@ -476,7 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29J22D29N7;
+				DEVELOPMENT_TEAM = 85FC4GXVG5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,7 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29J22D29N7;
+				DEVELOPMENT_TEAM = 85FC4GXVG5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

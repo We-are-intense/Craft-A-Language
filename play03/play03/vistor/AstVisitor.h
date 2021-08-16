@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)visitFunctionDecl:(FunctionDecl *)functionDecl;
 - (id)visitFunctionBody:(FunctionBody *)functionBody;
 - (id)visitFunctionCall:(FunctionCall *)functionCall;
-
+- (id)visitExpressionStatement:(ExpressionStatement *)stmt;
 @end
 
 NS_ASSUME_NONNULL_END

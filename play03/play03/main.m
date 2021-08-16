@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
         Prog *prog = [parser parseProg];
         SymTable *symTable =SymTable.new;
         // 建立符号表
-        [[Enter new] visit:prog];
+        [[[Enter alloc] initWithSymTable:symTable] visit:prog];
         // 引用消解
         [[[RefResolver alloc] initWithSymTable:symTable] visit:prog];
         

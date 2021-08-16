@@ -5,6 +5,32 @@
 //  Created by xiaerfei on 2021/8/9.
 //
 
+/*
+ 
+    当前语法规则：
+    prog = statementList? EOF;
+    statementList = (variableDecl | functionDecl | expressionStatement)+ ;
+
+    variableDecl : 'let' Identifier typeAnnotation？ ('=' singleExpression) ';';
+    typeAnnotation : ':' typeName;
+
+    functionDecl: "function" Identifier "(" ")"  functionBody;
+    functionBody : '{' statementList? '}' ;
+
+    statement: functionDecl | expressionStatement;
+    expressionStatement: expression ';' ;
+    expression: primary (binOP primary)* ;
+    primary: StringLiteral | DecimalLiteral | IntegerLiteral | functionCall | '(' expression ')' ;
+    binOP: '+' | '-' | '*' | '/' | '=' | '+=' | '-=' | '*=' | '/=' | '==' | '!=' | '<=' | '>=' | '<'
+       | '>' | '&&'| '||'|...;
+
+    functionCall : Identifier '(' parameterList? ')' ;
+    parameterList : expression (',' expression)* ;
+ 
+ */
+
+
+
 #import "Parser.h"
 #import "FunctionDecl.h"
 #import "FunctionCall.h"

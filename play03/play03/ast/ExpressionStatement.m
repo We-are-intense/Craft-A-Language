@@ -19,8 +19,7 @@
 }
 
 - (id)accept:(AstVisitor *)visitor {
- 
-    return nil;
+    return [visitor visitExpressionStatement:self];
 }
 
 @end
