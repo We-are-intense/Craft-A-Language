@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4137664026CBB7120023966B /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137663F26CBB7120023966B /* Test.m */; };
+		4137664426CBB7910023966B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137664326CBB7910023966B /* Keyword.m */; };
 		4193B2C726C5F1F4002DE346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4193B2C626C5F1F4002DE346 /* main.m */; };
 		4ED3A60E26C8CF41006025B8 /* NSSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3A60D26C8CF41006025B8 /* NSSafeMutableArray.m */; };
 		4EFCE87E26C6A05C005A1425 /* SymTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCE85426C6A05C005A1425 /* SymTable.m */; };
@@ -53,6 +55,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4137663E26CBB7120023966B /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		4137663F26CBB7120023966B /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		4137664226CBB7910023966B /* Keyword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyword.h; sourceTree = "<group>"; };
+		4137664326CBB7910023966B /* Keyword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Keyword.m; sourceTree = "<group>"; };
 		4193B2C326C5F1F4002DE346 /* play03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = play03; sourceTree = BUILT_PRODUCTS_DIR; };
 		4193B2C626C5F1F4002DE346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4193B2E326C5F218002DE346 /* program.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = program.js; sourceTree = "<group>"; };
@@ -221,6 +227,10 @@
 				4EFCE8DA26C6A3D2005A1425 /* Scanner.m */,
 				4EFCE8D726C6A3D1005A1425 /* Token.h */,
 				4EFCE8DB26C6A3D2005A1425 /* Token.m */,
+				4137664226CBB7910023966B /* Keyword.h */,
+				4137664326CBB7910023966B /* Keyword.m */,
+				4137663E26CBB7120023966B /* Test.h */,
+				4137663F26CBB7120023966B /* Test.m */,
 			);
 			path = scanner;
 			sourceTree = "<group>";
@@ -319,6 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EFCE8E126C6AA28005A1425 /* Enter.m in Sources */,
+				4137664026CBB7120023966B /* Test.m in Sources */,
+				4137664426CBB7910023966B /* Keyword.m in Sources */,
 				4EFCE89026C6A1CF005A1425 /* LeftValue.m in Sources */,
 				4193B2C726C5F1F4002DE346 /* main.m in Sources */,
 				4EFCE8DD26C6A3D2005A1425 /* Scanner.m in Sources */,
