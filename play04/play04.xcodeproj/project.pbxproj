@@ -20,7 +20,6 @@
 		413766E426CBC0160023966B /* Seperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766E326CBC0160023966B /* Seperator.m */; };
 		413766F726CC98D60023966B /* AstNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EA26CC98D50023966B /* AstNode.m */; };
 		413766F826CC98D60023966B /* FunctionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EB26CC98D50023966B /* FunctionCall.m */; };
-		413766F926CC98D60023966B /* Tokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766ED26CC98D50023966B /* Tokenizer.m */; };
 		413766FA26CC98D60023966B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EE26CC98D50023966B /* Parser.m */; };
 		413766FB26CC98D60023966B /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F226CC98D50023966B /* Statement.m */; };
 		413766FC26CC98D60023966B /* Prog.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F526CC98D60023966B /* Prog.m */; };
@@ -86,13 +85,11 @@
 		413766EA26CC98D50023966B /* AstNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstNode.m; sourceTree = "<group>"; };
 		413766EB26CC98D50023966B /* FunctionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionCall.m; sourceTree = "<group>"; };
 		413766EC26CC98D50023966B /* FunctionBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBody.h; sourceTree = "<group>"; };
-		413766ED26CC98D50023966B /* Tokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tokenizer.m; sourceTree = "<group>"; };
 		413766EE26CC98D50023966B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		413766EF26CC98D50023966B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		413766F026CC98D50023966B /* Prog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prog.h; sourceTree = "<group>"; };
 		413766F126CC98D50023966B /* AstNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstNode.h; sourceTree = "<group>"; };
 		413766F226CC98D50023966B /* Statement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
-		413766F326CC98D50023966B /* Tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tokenizer.h; sourceTree = "<group>"; };
 		413766F426CC98D60023966B /* FunctionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionCall.h; sourceTree = "<group>"; };
 		413766F526CC98D60023966B /* Prog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog.m; sourceTree = "<group>"; };
 		413766F626CC98D60023966B /* FunctionBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBody.m; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 				413766F526CC98D60023966B /* Prog.m */,
 				413766E926CC98D50023966B /* Statement.h */,
 				413766F226CC98D50023966B /* Statement.m */,
-				413766F326CC98D50023966B /* Tokenizer.h */,
-				413766ED26CC98D50023966B /* Tokenizer.m */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -353,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				413766F926CC98D60023966B /* Tokenizer.m in Sources */,
 				4137670C26CCAE990023966B /* Symbol.m in Sources */,
 				4137673226CCB0000023966B /* IntegerLiteral.m in Sources */,
 				413766D626CBBDA00023966B /* Token.m in Sources */,

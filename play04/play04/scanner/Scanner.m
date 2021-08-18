@@ -7,6 +7,7 @@
 
 #import "Scanner.h"
 #import "NSMutableArray+GetSafe.h"
+#import "TokenKind.h"
 
 @interface Scanner ()
 
@@ -60,9 +61,11 @@
 - (Token *)getAToken {
     // 跳过空白字符
     [self skipWhiteSpaces];
+    Position *pos = self.stream.getPosition;
     // 遇到结束符
     if (self.stream.eof) {
-        return [Token createWithKind:TokenKindEOF text:@""];
+//        return [Token createWithKind:TokenKindEOF text:@""];
+        return NToken(TokenKind.EOFF, @"", nil, 0);
     }
 
     unichar ch = self.stream.peek;
@@ -77,7 +80,6 @@
     if (ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == '[' || ch == ']' ||
         ch == ',' || ch == ';' || ch == ':' || ch == '?' || ch == '@') { // @ 为装饰器
         [self.stream next];
-        NewToken(TokenKindSeperator, (SChar(ch)));
         
         return [Token createWithKind:TokenKindSeperator text:[NSString stringWithFormat:@"%c",ch]];
     }

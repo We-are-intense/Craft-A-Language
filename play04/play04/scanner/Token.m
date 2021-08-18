@@ -16,14 +16,6 @@
 
 @implementation Token
 
-+ (instancetype)createWithKind:(TokenKind)kind text:(NSString *)text {
-    Token *token = Token.new;
-    token.kind = kind;
-    token.text = text;
-
-    return token;
-}
-
 + (instancetype)createWithKind:(NSUInteger)kind
                           text:(NSString *)text
                            pos:(Position *)pos
@@ -35,6 +27,8 @@
     return token;
 }
 
-
+- (NSString *)toString {
+    return [NSString stringWithFormat:@"Token@%@\t Kind: %ld text: %@", self.pos.toString, self.kind, self.text];
+}
 
 @end

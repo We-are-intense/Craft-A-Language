@@ -35,7 +35,7 @@
 #import "FunctionDecl.h"
 #import "FunctionCall.h"
 #import "FunctionBody.h"
-
+#import "TokenKind.h"
 @interface Parser ()
 
 @property (nonatomic, strong) Scanner *scanner;
@@ -64,7 +64,7 @@
     NSMutableArray <Statement *> *stmts = [NSMutableArray array];
     Token *t = self.scanner.peek;
     
-    while (t.kind != TokenKindEOF && !SEqual(t.text, @"}")) {
+    while (t.kind != TokenKind.EOFF && !SEqual(t.text, @"}")) {
         Statement *stmt = [self parseStatement];
         if (stmt) {
             [stmts addObject:stmt];
@@ -78,15 +78,15 @@
 
 - (Statement *)parseStatement {
     Token *t = self.scanner.peek;
-    if (t.kind == TokenKindKeyword && SEqual(t.text, @"function")) {
+    if (t.kind == TokenKind.Keyword && SEqual(t.text, @"function")) {
         // 这是个函数声明
         return [self parseFunctionDecl];
     } else if(SEqual(t.text, @"let")) {
         return [self parseVariableDecl];
-    } else if (t.kind == TokenKindIdentifier ||
-               t.kind == TokenKindDecimalLiteral ||
-               t.kind == TokenKindIntegerLiteral ||
-               t.kind == TokenKindStringLiteral ||
+    } else if (t.kind == TokenKind.Identifier ||
+               t.kind == TokenKind.DecimalLiteral ||
+               t.kind == TokenKind.IntegerLiteral ||
+               t.kind == TokenKind.StringLiteral ||
                SEqual(t.text, @"(")) {
         return [self parseExpressionStatement];
     }
@@ -141,7 +141,7 @@
      * 第一次循环还是一样。
      * 在递归中，新的运算符的优先级要小，所以只返回一个5，跟前一个节点形成3*5.
      */
-    while (t.kind == TokenKindOperator && tprec > prec) {
+    while (t.kind == TokenKind.Operator && tprec > prec) {
         [self.scanner next]; // 跳过运算符
         Expression *exp2 = [self parseBinary:tprec];
         if (exp2) {
@@ -160,20 +160,20 @@
     Token *t = self.scanner.peek;
     //知识点：以Identifier开头，可能是函数调用，也可能是一个变量，所以要再多向后看一个Token，
     //这相当于在局部使用了LL(2)算法。
-    if (t.kind == TokenKindIdentifier) {
+    if (t.kind == TokenKind.Identifier) {
         if (SEqual(self.scanner.peek2.text, @"(")) {
             return [self parseFunctionCall];
         } else {
             [self.scanner next];
             return [[Variable alloc] initWithName:t.text];
         }
-    } else if(t.kind == TokenKindIntegerLiteral) {
+    } else if(t.kind == TokenKind.IntegerLiteral) {
         [self.scanner next];
         return [[IntegerLiteral alloc] initWithValue:@(t.text.integerValue)];
-    } else if (t.kind == TokenKindDecimalLiteral) {
+    } else if (t.kind == TokenKind.DecimalLiteral) {
         [self.scanner next];
         return [[DecimalLiteral alloc] initWithValue:@(t.text.floatValue)];
-    } else if (t.kind == TokenKindStringLiteral) {
+    } else if (t.kind == TokenKind.StringLiteral) {
         [self.scanner next];
         return [[StringLiteral alloc] initWithValue:t.text];
     } else if(SEqual(t.text, @"(")) {
@@ -203,7 +203,7 @@
     // 跳过关键字'function'
     [self.scanner next];
     Token *token = self.scanner.next;
-    if (token.kind == TokenKindIdentifier) {
+    if (token.kind == TokenKind.Identifier) {
         Token *t1 = self.scanner.next;
         if ([t1.text isEqualToString:@"("]) {
             Token *t2 = self.scanner.next;
@@ -259,7 +259,7 @@
 - (id)parseFunctionCall {
     NSMutableArray <Expression *> *params = [NSMutableArray array];
     Token *t = self.scanner.next;
-    if (t.kind == TokenKindIdentifier) {
+    if (t.kind == TokenKind.Identifier) {
         Token *t1 = self.scanner.next;
         if (SEqual(t1.text, @"(")) {
             Token *t2 = self.scanner.peek;
@@ -301,7 +301,7 @@
 - (id)parseVariableDecl {
     [self.scanner next];
     Token *t = self.scanner.next;
-    if (t.kind == TokenKindIdentifier) {
+    if (t.kind == TokenKind.Identifier) {
         NSString *varName = t.text;
         NSString *varType = @"any";
         Expression *initi = nil;
@@ -311,7 +311,7 @@
         if (SEqual(t1.text, @":")) {
             [self.scanner next];
             t1 = self.scanner.peek;
-            if (t1.kind == TokenKindIdentifier) {
+            if (t1.kind == TokenKind.Identifier) {
                 [self.scanner next];
                 varType = t1.text;
                 t1 = self.scanner.peek;

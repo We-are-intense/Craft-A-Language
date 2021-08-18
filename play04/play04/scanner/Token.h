@@ -12,27 +12,24 @@
 #define SEqual(aa, bb) [aa isEqualToString:bb]
 #define SChar(cc) [NSString stringWithFormat:@"%c",cc]
 
-#define NewToken(aa,bb) [Token createWithKind:aa text:bb]
-#define NewTokenWord(aa,bb) [Token createWithKind:aa text:@#bb]
-
-#define NToken(aa, bb, cc, dd) [Token createWithKind:aa text:bb pos:cc code:dd]
+#define NToken(kd, txt, posi, codee) [Token createWithKind:kd text:txt pos:posi code:codee]
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 
-typedef NS_ENUM(NSInteger, TokenKind) {
-    TokenKindKeyword,        /// <  关键字
-    TokenKindIdentifier,     /// <  标识符
-    TokenKindStringLiteral,  /// <  字符串
-    TokenKindIntegerLiteral, /// <  整数
-    TokenKindDecimalLiteral, /// <  小数
-    TokenKindNullLiteral,    /// <  nil
-    TokenKindBooleanLiteral, /// <  布尔值
-    TokenKindSeperator,      /// <  分隔符
-    TokenKindOperator,       /// <  运算符
-    TokenKindEOF            /// <  结束
-};
+//typedef NS_ENUM(NSInteger, TokenKind) {
+//    TokenKindKeyword,        /// <  关键字
+//    TokenKindIdentifier,     /// <  标识符
+//    TokenKindStringLiteral,  /// <  字符串
+//    TokenKindIntegerLiteral, /// <  整数
+//    TokenKindDecimalLiteral, /// <  小数
+//    TokenKindNullLiteral,    /// <  nil
+//    TokenKindBooleanLiteral, /// <  布尔值
+//    TokenKindSeperator,      /// <  分隔符
+//    TokenKindOperator,       /// <  运算符
+//    TokenKindEOF            /// <  结束
+//};
 
 
 
@@ -41,8 +38,6 @@ typedef NS_ENUM(NSInteger, TokenKind) {
 @property (nonatomic, assign, readonly) NSUInteger kind;
 @property (nonatomic, copy,   readonly) NSString *text;
 @property (nonatomic, copy,   readonly) Position *pos;
-
-+ (instancetype)createWithKind:(TokenKind)kind text:(NSString *)text;
 
 + (instancetype)createWithKind:(NSUInteger)kind
                           text:(NSString *)text
