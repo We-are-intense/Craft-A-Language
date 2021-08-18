@@ -34,6 +34,7 @@
     }
     return [self.data characterAtIndex:self.pos];
 }
+
 - (unichar)next {
     unichar ch = [self.data characterAtIndex:self.pos++];
     if (ch == '\n') {
@@ -44,10 +45,14 @@
     }
     return ch;
 }
+
 - (BOOL)eof {
     return self.peek == '\0';
 }
 
+- (Position *)getPosition {
+    return NPosition(self.pos + 1, self.pos + 1, self.line, self.col);
+}
 
 
 @end

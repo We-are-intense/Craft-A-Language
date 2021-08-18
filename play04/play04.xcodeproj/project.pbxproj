@@ -8,42 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		4137665326CBBD2D0023966B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137665226CBBD2D0023966B /* main.m */; };
-		413766A526CBBD660023966B /* NSSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137665C26CBBD660023966B /* NSSafeMutableArray.m */; };
 		413766A626CBBD660023966B /* NSMutableArray+GetSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137665D26CBBD660023966B /* NSMutableArray+GetSafe.m */; };
-		413766A726CBBD660023966B /* FunctionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666426CBBD660023966B /* FunctionCall.m */; };
-		413766A826CBBD660023966B /* FunctionBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666526CBBD660023966B /* FunctionBody.m */; };
-		413766A926CBBD660023966B /* Prog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666826CBBD660023966B /* Prog.m */; };
-		413766AA26CBBD660023966B /* AstNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666A26CBBD660023966B /* AstNode.m */; };
-		413766AB26CBBD660023966B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666B26CBBD660023966B /* Parser.m */; };
-		413766AC26CBBD660023966B /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666C26CBBD660023966B /* Statement.m */; };
-		413766AD26CBBD660023966B /* Tokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137666D26CBBD660023966B /* Tokenizer.m */; };
 		413766AE26CBBD660023966B /* Intepretor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667026CBBD660023966B /* Intepretor.m */; };
 		413766AF26CBBD660023966B /* LeftValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667226CBBD660023966B /* LeftValue.m */; };
 		413766B026CBBD660023966B /* AstVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667426CBBD660023966B /* AstVisitor.m */; };
-		413766B126CBBD660023966B /* SymTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667726CBBD660023966B /* SymTable.m */; };
-		413766B226CBBD660023966B /* RefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667926CBBD660023966B /* RefResolver.m */; };
-		413766B326CBBD660023966B /* Enter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667A26CBBD660023966B /* Enter.m */; };
-		413766B426CBBD660023966B /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667D26CBBD660023966B /* Symbol.m */; };
-		413766BA26CBBD660023966B /* Expression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137668B26CBBD660023966B /* Expression.m */; };
-		413766BB26CBBD660023966B /* BooleanLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137668C26CBBD660023966B /* BooleanLiteral.m */; };
-		413766BC26CBBD660023966B /* IntegerLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137668D26CBBD660023966B /* IntegerLiteral.m */; };
-		413766BD26CBBD660023966B /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137668F26CBBD660023966B /* Block.m */; };
-		413766BE26CBBD660023966B /* Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669326CBBD660023966B /* Binary.m */; };
-		413766BF26CBBD660023966B /* FunctionDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669426CBBD660023966B /* FunctionDecl.m */; };
-		413766C026CBBD660023966B /* VariableDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669726CBBD660023966B /* VariableDecl.m */; };
-		413766C126CBBD660023966B /* StringLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669826CBBD660023966B /* StringLiteral.m */; };
-		413766C226CBBD660023966B /* DecimalLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669C26CBBD660023966B /* DecimalLiteral.m */; };
-		413766C326CBBD660023966B /* ExpressionStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669E26CBBD660023966B /* ExpressionStatement.m */; };
-		413766C426CBBD660023966B /* Decl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137669F26CBBD660023966B /* Decl.m */; };
-		413766C526CBBD660023966B /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766A126CBBD660023966B /* Variable.m */; };
-		413766C626CBBD660023966B /* NullLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766A226CBBD660023966B /* NullLiteral.m */; };
 		413766D526CBBDA00023966B /* CharStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CB26CBBD9F0023966B /* CharStream.m */; };
 		413766D626CBBDA00023966B /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CC26CBBD9F0023966B /* Token.m */; };
 		413766D826CBBDA00023966B /* Scanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CE26CBBD9F0023966B /* Scanner.m */; };
 		413766D926CBBDA00023966B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766D026CBBD9F0023966B /* Keyword.m */; };
 		413766DF26CBBDF10023966B /* TokenKind.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766DE26CBBDF10023966B /* TokenKind.m */; };
 		413766E426CBC0160023966B /* Seperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766E326CBC0160023966B /* Seperator.m */; };
-		4EB3FA4326CBFAEC00250B97 /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3FA4226CBFAEC00250B97 /* Op.m */; };
+		413766F726CC98D60023966B /* AstNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EA26CC98D50023966B /* AstNode.m */; };
+		413766F826CC98D60023966B /* FunctionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EB26CC98D50023966B /* FunctionCall.m */; };
+		413766FA26CC98D60023966B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EE26CC98D50023966B /* Parser.m */; };
+		413766FB26CC98D60023966B /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F226CC98D50023966B /* Statement.m */; };
+		413766FC26CC98D60023966B /* Prog.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F526CC98D60023966B /* Prog.m */; };
+		413766FD26CC98D60023966B /* FunctionBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F626CC98D60023966B /* FunctionBody.m */; };
+		4137670A26CCAE990023966B /* SymTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670226CCAE990023966B /* SymTable.m */; };
+		4137670B26CCAE990023966B /* Enter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670426CCAE990023966B /* Enter.m */; };
+		4137670C26CCAE990023966B /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670726CCAE990023966B /* Symbol.m */; };
+		4137670D26CCAE990023966B /* RefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670926CCAE990023966B /* RefResolver.m */; };
+		4137672A26CCB0000023966B /* NullLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671026CCAFFF0023966B /* NullLiteral.m */; };
+		4137672B26CCB0000023966B /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671126CCB0000023966B /* Variable.m */; };
+		4137672C26CCB0000023966B /* FunctionDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671226CCB0000023966B /* FunctionDecl.m */; };
+		4137672D26CCB0000023966B /* StringLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671326CCB0000023966B /* StringLiteral.m */; };
+		4137672E26CCB0000023966B /* Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671426CCB0000023966B /* Binary.m */; };
+		4137672F26CCB0000023966B /* DecimalLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671D26CCB0000023966B /* DecimalLiteral.m */; };
+		4137673026CCB0000023966B /* Decl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672126CCB0000023966B /* Decl.m */; };
+		4137673126CCB0000023966B /* ExpressionStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672226CCB0000023966B /* ExpressionStatement.m */; };
+		4137673226CCB0000023966B /* IntegerLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672326CCB0000023966B /* IntegerLiteral.m */; };
+		4137673326CCB0000023966B /* Expression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672426CCB0000023966B /* Expression.m */; };
+		4137673426CCB0000023966B /* BooleanLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672526CCB0000023966B /* BooleanLiteral.m */; };
+		4137673526CCB0000023966B /* VariableDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672726CCB0000023966B /* VariableDecl.m */; };
+		4137673626CCB0000023966B /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672826CCB0000023966B /* Block.m */; };
+		4137673A26CCCC9F0023966B /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137673926CCCC9F0023966B /* Position.m */; };
+		4EA2D4A326CD2E450060E01B /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2D4A226CD2E450060E01B /* Op.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,64 +61,14 @@
 		4137664F26CBBD2D0023966B /* play04 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = play04; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137665226CBBD2D0023966B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4137665A26CBBD660023966B /* program.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = program.js; sourceTree = "<group>"; };
-		4137665C26CBBD660023966B /* NSSafeMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSafeMutableArray.m; sourceTree = "<group>"; };
 		4137665D26CBBD660023966B /* NSMutableArray+GetSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GetSafe.m"; sourceTree = "<group>"; };
-		4137665E26CBBD660023966B /* NSSafeMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSafeMutableArray.h; sourceTree = "<group>"; };
 		4137665F26CBBD660023966B /* NSMutableArray+GetSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GetSafe.h"; sourceTree = "<group>"; };
-		4137666126CBBD660023966B /* Prog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prog.h; sourceTree = "<group>"; };
-		4137666226CBBD660023966B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
-		4137666326CBBD660023966B /* AstNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstNode.h; sourceTree = "<group>"; };
-		4137666426CBBD660023966B /* FunctionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionCall.m; sourceTree = "<group>"; };
-		4137666526CBBD660023966B /* FunctionBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBody.m; sourceTree = "<group>"; };
-		4137666626CBBD660023966B /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
-		4137666726CBBD660023966B /* Tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tokenizer.h; sourceTree = "<group>"; };
-		4137666826CBBD660023966B /* Prog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog.m; sourceTree = "<group>"; };
-		4137666926CBBD660023966B /* FunctionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionCall.h; sourceTree = "<group>"; };
-		4137666A26CBBD660023966B /* AstNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstNode.m; sourceTree = "<group>"; };
-		4137666B26CBBD660023966B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
-		4137666C26CBBD660023966B /* Statement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
-		4137666D26CBBD660023966B /* Tokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tokenizer.m; sourceTree = "<group>"; };
-		4137666E26CBBD660023966B /* FunctionBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBody.h; sourceTree = "<group>"; };
 		4137667026CBBD660023966B /* Intepretor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Intepretor.m; sourceTree = "<group>"; };
 		4137667126CBBD660023966B /* AstVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstVisitor.h; sourceTree = "<group>"; };
 		4137667226CBBD660023966B /* LeftValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftValue.m; sourceTree = "<group>"; };
 		4137667326CBBD660023966B /* Intepretor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Intepretor.h; sourceTree = "<group>"; };
 		4137667426CBBD660023966B /* AstVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstVisitor.m; sourceTree = "<group>"; };
 		4137667526CBBD660023966B /* LeftValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftValue.h; sourceTree = "<group>"; };
-		4137667726CBBD660023966B /* SymTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymTable.m; sourceTree = "<group>"; };
-		4137667826CBBD660023966B /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
-		4137667926CBBD660023966B /* RefResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefResolver.m; sourceTree = "<group>"; };
-		4137667A26CBBD660023966B /* Enter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enter.m; sourceTree = "<group>"; };
-		4137667B26CBBD660023966B /* SymTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymTable.h; sourceTree = "<group>"; };
-		4137667C26CBBD660023966B /* RefResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefResolver.h; sourceTree = "<group>"; };
-		4137667D26CBBD660023966B /* Symbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symbol.m; sourceTree = "<group>"; };
-		4137667E26CBBD660023966B /* Enter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enter.h; sourceTree = "<group>"; };
-		4137668B26CBBD660023966B /* Expression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expression.m; sourceTree = "<group>"; };
-		4137668C26CBBD660023966B /* BooleanLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanLiteral.m; sourceTree = "<group>"; };
-		4137668D26CBBD660023966B /* IntegerLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegerLiteral.m; sourceTree = "<group>"; };
-		4137668E26CBBD660023966B /* StringLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringLiteral.h; sourceTree = "<group>"; };
-		4137668F26CBBD660023966B /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
-		4137669026CBBD660023966B /* DecimalLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalLiteral.h; sourceTree = "<group>"; };
-		4137669126CBBD660023966B /* Decl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decl.h; sourceTree = "<group>"; };
-		4137669226CBBD660023966B /* ExpressionStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionStatement.h; sourceTree = "<group>"; };
-		4137669326CBBD660023966B /* Binary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Binary.m; sourceTree = "<group>"; };
-		4137669426CBBD660023966B /* FunctionDecl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionDecl.m; sourceTree = "<group>"; };
-		4137669526CBBD660023966B /* NullLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullLiteral.h; sourceTree = "<group>"; };
-		4137669626CBBD660023966B /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
-		4137669726CBBD660023966B /* VariableDecl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableDecl.m; sourceTree = "<group>"; };
-		4137669826CBBD660023966B /* StringLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringLiteral.m; sourceTree = "<group>"; };
-		4137669926CBBD660023966B /* IntegerLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerLiteral.h; sourceTree = "<group>"; };
-		4137669A26CBBD660023966B /* BooleanLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanLiteral.h; sourceTree = "<group>"; };
-		4137669B26CBBD660023966B /* Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expression.h; sourceTree = "<group>"; };
-		4137669C26CBBD660023966B /* DecimalLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalLiteral.m; sourceTree = "<group>"; };
-		4137669D26CBBD660023966B /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
-		4137669E26CBBD660023966B /* ExpressionStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionStatement.m; sourceTree = "<group>"; };
-		4137669F26CBBD660023966B /* Decl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decl.m; sourceTree = "<group>"; };
-		413766A026CBBD660023966B /* VariableDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableDecl.h; sourceTree = "<group>"; };
-		413766A126CBBD660023966B /* Variable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variable.m; sourceTree = "<group>"; };
-		413766A226CBBD660023966B /* NullLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullLiteral.m; sourceTree = "<group>"; };
-		413766A326CBBD660023966B /* FunctionDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionDecl.h; sourceTree = "<group>"; };
-		413766A426CBBD660023966B /* Binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Binary.h; sourceTree = "<group>"; };
 		413766CB26CBBD9F0023966B /* CharStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharStream.m; sourceTree = "<group>"; };
 		413766CC26CBBD9F0023966B /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 		413766CE26CBBD9F0023966B /* Scanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scanner.m; sourceTree = "<group>"; };
@@ -133,8 +82,56 @@
 		413766E226CBC0160023966B /* Seperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Seperator.h; sourceTree = "<group>"; };
 		413766E326CBC0160023966B /* Seperator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seperator.m; sourceTree = "<group>"; };
 		413766E626CBC0C90023966B /* helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = helper.h; sourceTree = "<group>"; };
-		4EB3FA4126CBFAEC00250B97 /* Op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = "<group>"; };
-		4EB3FA4226CBFAEC00250B97 /* Op.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Op.m; sourceTree = "<group>"; };
+		413766E926CC98D50023966B /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
+		413766EA26CC98D50023966B /* AstNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AstNode.m; sourceTree = "<group>"; };
+		413766EB26CC98D50023966B /* FunctionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionCall.m; sourceTree = "<group>"; };
+		413766EC26CC98D50023966B /* FunctionBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionBody.h; sourceTree = "<group>"; };
+		413766EE26CC98D50023966B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		413766EF26CC98D50023966B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		413766F026CC98D50023966B /* Prog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prog.h; sourceTree = "<group>"; };
+		413766F126CC98D50023966B /* AstNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstNode.h; sourceTree = "<group>"; };
+		413766F226CC98D50023966B /* Statement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
+		413766F426CC98D60023966B /* FunctionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionCall.h; sourceTree = "<group>"; };
+		413766F526CC98D60023966B /* Prog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prog.m; sourceTree = "<group>"; };
+		413766F626CC98D60023966B /* FunctionBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionBody.m; sourceTree = "<group>"; };
+		4137670226CCAE990023966B /* SymTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymTable.m; sourceTree = "<group>"; };
+		4137670326CCAE990023966B /* RefResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefResolver.h; sourceTree = "<group>"; };
+		4137670426CCAE990023966B /* Enter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enter.m; sourceTree = "<group>"; };
+		4137670526CCAE990023966B /* SymTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymTable.h; sourceTree = "<group>"; };
+		4137670626CCAE990023966B /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		4137670726CCAE990023966B /* Symbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symbol.m; sourceTree = "<group>"; };
+		4137670826CCAE990023966B /* Enter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enter.h; sourceTree = "<group>"; };
+		4137670926CCAE990023966B /* RefResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefResolver.m; sourceTree = "<group>"; };
+		4137671026CCAFFF0023966B /* NullLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullLiteral.m; sourceTree = "<group>"; };
+		4137671126CCB0000023966B /* Variable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variable.m; sourceTree = "<group>"; };
+		4137671226CCB0000023966B /* FunctionDecl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionDecl.m; sourceTree = "<group>"; };
+		4137671326CCB0000023966B /* StringLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringLiteral.m; sourceTree = "<group>"; };
+		4137671426CCB0000023966B /* Binary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Binary.m; sourceTree = "<group>"; };
+		4137671526CCB0000023966B /* VariableDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableDecl.h; sourceTree = "<group>"; };
+		4137671626CCB0000023966B /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
+		4137671726CCB0000023966B /* BooleanLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanLiteral.h; sourceTree = "<group>"; };
+		4137671826CCB0000023966B /* NullLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullLiteral.h; sourceTree = "<group>"; };
+		4137671926CCB0000023966B /* Decl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decl.h; sourceTree = "<group>"; };
+		4137671A26CCB0000023966B /* DecimalLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalLiteral.h; sourceTree = "<group>"; };
+		4137671B26CCB0000023966B /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		4137671C26CCB0000023966B /* ExpressionStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionStatement.h; sourceTree = "<group>"; };
+		4137671D26CCB0000023966B /* DecimalLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalLiteral.m; sourceTree = "<group>"; };
+		4137671E26CCB0000023966B /* Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expression.h; sourceTree = "<group>"; };
+		4137671F26CCB0000023966B /* Binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Binary.h; sourceTree = "<group>"; };
+		4137672026CCB0000023966B /* FunctionDecl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionDecl.h; sourceTree = "<group>"; };
+		4137672126CCB0000023966B /* Decl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decl.m; sourceTree = "<group>"; };
+		4137672226CCB0000023966B /* ExpressionStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressionStatement.m; sourceTree = "<group>"; };
+		4137672326CCB0000023966B /* IntegerLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegerLiteral.m; sourceTree = "<group>"; };
+		4137672426CCB0000023966B /* Expression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expression.m; sourceTree = "<group>"; };
+		4137672526CCB0000023966B /* BooleanLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanLiteral.m; sourceTree = "<group>"; };
+		4137672626CCB0000023966B /* StringLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringLiteral.h; sourceTree = "<group>"; };
+		4137672726CCB0000023966B /* VariableDecl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableDecl.m; sourceTree = "<group>"; };
+		4137672826CCB0000023966B /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
+		4137672926CCB0000023966B /* IntegerLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerLiteral.h; sourceTree = "<group>"; };
+		4137673826CCCC9F0023966B /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		4137673926CCCC9F0023966B /* Position.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
+		4EA2D4A126CD2E450060E01B /* Op.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = "<group>"; };
+		4EA2D4A226CD2E450060E01B /* Op.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Op.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,10 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				413766DC26CBBDC10023966B /* enum */,
-				4137665C26CBBD660023966B /* NSSafeMutableArray.m */,
-				4137665D26CBBD660023966B /* NSMutableArray+GetSafe.m */,
-				4137665E26CBBD660023966B /* NSSafeMutableArray.h */,
 				4137665F26CBBD660023966B /* NSMutableArray+GetSafe.h */,
+				4137665D26CBBD660023966B /* NSMutableArray+GetSafe.m */,
 				413766E626CBC0C90023966B /* helper.h */,
 			);
 			path = utils;
@@ -195,20 +190,18 @@
 		4137666026CBBD660023966B /* parser */ = {
 			isa = PBXGroup;
 			children = (
-				4137666126CBBD660023966B /* Prog.h */,
-				4137666226CBBD660023966B /* Parser.h */,
-				4137666326CBBD660023966B /* AstNode.h */,
-				4137666426CBBD660023966B /* FunctionCall.m */,
-				4137666526CBBD660023966B /* FunctionBody.m */,
-				4137666626CBBD660023966B /* Statement.h */,
-				4137666726CBBD660023966B /* Tokenizer.h */,
-				4137666826CBBD660023966B /* Prog.m */,
-				4137666926CBBD660023966B /* FunctionCall.h */,
-				4137666A26CBBD660023966B /* AstNode.m */,
-				4137666B26CBBD660023966B /* Parser.m */,
-				4137666C26CBBD660023966B /* Statement.m */,
-				4137666D26CBBD660023966B /* Tokenizer.m */,
-				4137666E26CBBD660023966B /* FunctionBody.h */,
+				413766F126CC98D50023966B /* AstNode.h */,
+				413766EA26CC98D50023966B /* AstNode.m */,
+				413766EC26CC98D50023966B /* FunctionBody.h */,
+				413766F626CC98D60023966B /* FunctionBody.m */,
+				413766F426CC98D60023966B /* FunctionCall.h */,
+				413766EB26CC98D50023966B /* FunctionCall.m */,
+				413766EF26CC98D50023966B /* Parser.h */,
+				413766EE26CC98D50023966B /* Parser.m */,
+				413766F026CC98D50023966B /* Prog.h */,
+				413766F526CC98D60023966B /* Prog.m */,
+				413766E926CC98D50023966B /* Statement.h */,
+				413766F226CC98D50023966B /* Statement.m */,
 			);
 			path = parser;
 			sourceTree = "<group>";
@@ -216,12 +209,12 @@
 		4137666F26CBBD660023966B /* vistor */ = {
 			isa = PBXGroup;
 			children = (
-				4137667026CBBD660023966B /* Intepretor.m */,
-				4137667126CBBD660023966B /* AstVisitor.h */,
-				4137667226CBBD660023966B /* LeftValue.m */,
 				4137667326CBBD660023966B /* Intepretor.h */,
-				4137667426CBBD660023966B /* AstVisitor.m */,
+				4137667026CBBD660023966B /* Intepretor.m */,
 				4137667526CBBD660023966B /* LeftValue.h */,
+				4137667226CBBD660023966B /* LeftValue.m */,
+				4137667126CBBD660023966B /* AstVisitor.h */,
+				4137667426CBBD660023966B /* AstVisitor.m */,
 			);
 			path = vistor;
 			sourceTree = "<group>";
@@ -229,14 +222,14 @@
 		4137667626CBBD660023966B /* semantic */ = {
 			isa = PBXGroup;
 			children = (
-				4137667726CBBD660023966B /* SymTable.m */,
-				4137667826CBBD660023966B /* Symbol.h */,
-				4137667926CBBD660023966B /* RefResolver.m */,
-				4137667A26CBBD660023966B /* Enter.m */,
-				4137667B26CBBD660023966B /* SymTable.h */,
-				4137667C26CBBD660023966B /* RefResolver.h */,
-				4137667D26CBBD660023966B /* Symbol.m */,
-				4137667E26CBBD660023966B /* Enter.h */,
+				4137670826CCAE990023966B /* Enter.h */,
+				4137670426CCAE990023966B /* Enter.m */,
+				4137670326CCAE990023966B /* RefResolver.h */,
+				4137670926CCAE990023966B /* RefResolver.m */,
+				4137670626CCAE990023966B /* Symbol.h */,
+				4137670726CCAE990023966B /* Symbol.m */,
+				4137670526CCAE990023966B /* SymTable.h */,
+				4137670226CCAE990023966B /* SymTable.m */,
 			);
 			path = semantic;
 			sourceTree = "<group>";
@@ -250,6 +243,8 @@
 				413766CE26CBBD9F0023966B /* Scanner.m */,
 				413766CF26CBBD9F0023966B /* Token.h */,
 				413766CC26CBBD9F0023966B /* Token.m */,
+				4137673826CCCC9F0023966B /* Position.h */,
+				4137673926CCCC9F0023966B /* Position.m */,
 			);
 			path = scanner;
 			sourceTree = "<group>";
@@ -257,32 +252,32 @@
 		4137668A26CBBD660023966B /* ast */ = {
 			isa = PBXGroup;
 			children = (
-				4137668B26CBBD660023966B /* Expression.m */,
-				4137668C26CBBD660023966B /* BooleanLiteral.m */,
-				4137668D26CBBD660023966B /* IntegerLiteral.m */,
-				4137668E26CBBD660023966B /* StringLiteral.h */,
-				4137668F26CBBD660023966B /* Block.m */,
-				4137669026CBBD660023966B /* DecimalLiteral.h */,
-				4137669126CBBD660023966B /* Decl.h */,
-				4137669226CBBD660023966B /* ExpressionStatement.h */,
-				4137669326CBBD660023966B /* Binary.m */,
-				4137669426CBBD660023966B /* FunctionDecl.m */,
-				4137669526CBBD660023966B /* NullLiteral.h */,
-				4137669626CBBD660023966B /* Variable.h */,
-				4137669726CBBD660023966B /* VariableDecl.m */,
-				4137669826CBBD660023966B /* StringLiteral.m */,
-				4137669926CBBD660023966B /* IntegerLiteral.h */,
-				4137669A26CBBD660023966B /* BooleanLiteral.h */,
-				4137669B26CBBD660023966B /* Expression.h */,
-				4137669C26CBBD660023966B /* DecimalLiteral.m */,
-				4137669D26CBBD660023966B /* Block.h */,
-				4137669E26CBBD660023966B /* ExpressionStatement.m */,
-				4137669F26CBBD660023966B /* Decl.m */,
-				413766A026CBBD660023966B /* VariableDecl.h */,
-				413766A126CBBD660023966B /* Variable.m */,
-				413766A226CBBD660023966B /* NullLiteral.m */,
-				413766A326CBBD660023966B /* FunctionDecl.h */,
-				413766A426CBBD660023966B /* Binary.h */,
+				4137671F26CCB0000023966B /* Binary.h */,
+				4137671426CCB0000023966B /* Binary.m */,
+				4137671B26CCB0000023966B /* Block.h */,
+				4137672826CCB0000023966B /* Block.m */,
+				4137671726CCB0000023966B /* BooleanLiteral.h */,
+				4137672526CCB0000023966B /* BooleanLiteral.m */,
+				4137671A26CCB0000023966B /* DecimalLiteral.h */,
+				4137671D26CCB0000023966B /* DecimalLiteral.m */,
+				4137671926CCB0000023966B /* Decl.h */,
+				4137672126CCB0000023966B /* Decl.m */,
+				4137671E26CCB0000023966B /* Expression.h */,
+				4137672426CCB0000023966B /* Expression.m */,
+				4137671C26CCB0000023966B /* ExpressionStatement.h */,
+				4137672226CCB0000023966B /* ExpressionStatement.m */,
+				4137672026CCB0000023966B /* FunctionDecl.h */,
+				4137671226CCB0000023966B /* FunctionDecl.m */,
+				4137672926CCB0000023966B /* IntegerLiteral.h */,
+				4137672326CCB0000023966B /* IntegerLiteral.m */,
+				4137671826CCB0000023966B /* NullLiteral.h */,
+				4137671026CCAFFF0023966B /* NullLiteral.m */,
+				4137672626CCB0000023966B /* StringLiteral.h */,
+				4137671326CCB0000023966B /* StringLiteral.m */,
+				4137671626CCB0000023966B /* Variable.h */,
+				4137671126CCB0000023966B /* Variable.m */,
+				4137671526CCB0000023966B /* VariableDecl.h */,
+				4137672726CCB0000023966B /* VariableDecl.m */,
 			);
 			path = ast;
 			sourceTree = "<group>";
@@ -290,14 +285,14 @@
 		413766DC26CBBDC10023966B /* enum */ = {
 			isa = PBXGroup;
 			children = (
+				4EA2D4A126CD2E450060E01B /* Op.h */,
+				4EA2D4A226CD2E450060E01B /* Op.m */,
 				413766D126CBBD9F0023966B /* Keyword.h */,
 				413766D026CBBD9F0023966B /* Keyword.m */,
 				413766DD26CBBDF10023966B /* TokenKind.h */,
 				413766DE26CBBDF10023966B /* TokenKind.m */,
 				413766E226CBC0160023966B /* Seperator.h */,
 				413766E326CBC0160023966B /* Seperator.m */,
-				4EB3FA4126CBFAEC00250B97 /* Op.h */,
-				4EB3FA4226CBFAEC00250B97 /* Op.m */,
 			);
 			path = enum;
 			sourceTree = "<group>";
@@ -358,43 +353,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				413766B326CBBD660023966B /* Enter.m in Sources */,
-				413766C026CBBD660023966B /* VariableDecl.m in Sources */,
-				413766C426CBBD660023966B /* Decl.m in Sources */,
+				4137670C26CCAE990023966B /* Symbol.m in Sources */,
+				4137673226CCB0000023966B /* IntegerLiteral.m in Sources */,
 				413766D626CBBDA00023966B /* Token.m in Sources */,
-				413766AB26CBBD660023966B /* Parser.m in Sources */,
-				413766A526CBBD660023966B /* NSSafeMutableArray.m in Sources */,
-				413766B426CBBD660023966B /* Symbol.m in Sources */,
-				413766BA26CBBD660023966B /* Expression.m in Sources */,
-				413766AC26CBBD660023966B /* Statement.m in Sources */,
-				413766AD26CBBD660023966B /* Tokenizer.m in Sources */,
-				413766AA26CBBD660023966B /* AstNode.m in Sources */,
+				4137672B26CCB0000023966B /* Variable.m in Sources */,
 				413766E426CBC0160023966B /* Seperator.m in Sources */,
-				413766A926CBBD660023966B /* Prog.m in Sources */,
-				413766C126CBBD660023966B /* StringLiteral.m in Sources */,
-				413766C626CBBD660023966B /* NullLiteral.m in Sources */,
+				4137673A26CCCC9F0023966B /* Position.m in Sources */,
+				4137670A26CCAE990023966B /* SymTable.m in Sources */,
+				4137673426CCB0000023966B /* BooleanLiteral.m in Sources */,
+				413766FB26CC98D60023966B /* Statement.m in Sources */,
 				413766A626CBBD660023966B /* NSMutableArray+GetSafe.m in Sources */,
+				4137672A26CCB0000023966B /* NullLiteral.m in Sources */,
 				4137665326CBBD2D0023966B /* main.m in Sources */,
-				413766B126CBBD660023966B /* SymTable.m in Sources */,
-				413766BE26CBBD660023966B /* Binary.m in Sources */,
-				413766BB26CBBD660023966B /* BooleanLiteral.m in Sources */,
+				413766F826CC98D60023966B /* FunctionCall.m in Sources */,
+				4137673026CCB0000023966B /* Decl.m in Sources */,
+				4137670D26CCAE990023966B /* RefResolver.m in Sources */,
+				413766F726CC98D60023966B /* AstNode.m in Sources */,
 				413766D526CBBDA00023966B /* CharStream.m in Sources */,
-				413766B226CBBD660023966B /* RefResolver.m in Sources */,
-				413766C326CBBD660023966B /* ExpressionStatement.m in Sources */,
-				413766C526CBBD660023966B /* Variable.m in Sources */,
+				413766FC26CC98D60023966B /* Prog.m in Sources */,
+				4EA2D4A326CD2E450060E01B /* Op.m in Sources */,
+				4137673626CCB0000023966B /* Block.m in Sources */,
+				413766FA26CC98D60023966B /* Parser.m in Sources */,
+				4137673126CCB0000023966B /* ExpressionStatement.m in Sources */,
+				4137672E26CCB0000023966B /* Binary.m in Sources */,
+				4137672D26CCB0000023966B /* StringLiteral.m in Sources */,
 				413766AE26CBBD660023966B /* Intepretor.m in Sources */,
-				413766A726CBBD660023966B /* FunctionCall.m in Sources */,
+				4137672F26CCB0000023966B /* DecimalLiteral.m in Sources */,
+				4137673326CCB0000023966B /* Expression.m in Sources */,
 				413766AF26CBBD660023966B /* LeftValue.m in Sources */,
 				413766D926CBBDA00023966B /* Keyword.m in Sources */,
-				413766C226CBBD660023966B /* DecimalLiteral.m in Sources */,
 				413766D826CBBDA00023966B /* Scanner.m in Sources */,
-				4EB3FA4326CBFAEC00250B97 /* Op.m in Sources */,
 				413766DF26CBBDF10023966B /* TokenKind.m in Sources */,
-				413766BD26CBBD660023966B /* Block.m in Sources */,
-				413766BF26CBBD660023966B /* FunctionDecl.m in Sources */,
-				413766BC26CBBD660023966B /* IntegerLiteral.m in Sources */,
+				4137673526CCB0000023966B /* VariableDecl.m in Sources */,
+				413766FD26CC98D60023966B /* FunctionBody.m in Sources */,
+				4137670B26CCAE990023966B /* Enter.m in Sources */,
 				413766B026CBBD660023966B /* AstVisitor.m in Sources */,
-				413766A826CBBD660023966B /* FunctionBody.m in Sources */,
+				4137672C26CCB0000023966B /* FunctionDecl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,10 @@
 //
 
 #import "Scanner.h"
+#import "NSMutableArray+GetSafe.h"
+#import "TokenKind.h"
+#import "Op.h"
+#import "Seperator.h"
 
 @interface Scanner ()
 
@@ -25,7 +29,7 @@
 }
 
 - (Token *)next {
-    Token *t = [self tokenShift];
+    Token *t = self.tokens.shift;
     if (t == nil) {
         return [self getAToken];
     } else {
@@ -34,7 +38,7 @@
 }
 
 - (Token *)peek {
-    Token *t = [self tokenAtIndex:0];
+    Token *t = [self.tokens index:0];
     if (t == nil) {
         t = [self getAToken];
         NSAssert(t, @"peek token 不能为 nil");
@@ -44,26 +48,26 @@
 }
 
 - (Token *)peek2 {
-    Token *t = [self tokenAtIndex:1];
+    Token *t = [self.tokens index:1];
     while (t == nil) {
         Token *t1 = [self getAToken];
         NSAssert(t1, @"peek2 token 不能为 nil");
         [self.tokens addObject:t1];
-        t = [self tokenAtIndex:1];
+        t = [self.tokens index:1];
     }
     return t;
 }
-
-
 
 #pragma mark - private methods
 #pragma mark 从字符串流中获取一个新Token
 - (Token *)getAToken {
     // 跳过空白字符
     [self skipWhiteSpaces];
+    Position *pos = self.stream.getPosition;
     // 遇到结束符
     if (self.stream.eof) {
-        return [Token createWithKind:TokenKindEOF text:@""];
+//        return [Token createWithKind:TokenKindEOF text:@""];
+        return NToken(TokenKind.EOFF, @"", nil, 0);
     }
 
     unichar ch = self.stream.peek;
@@ -75,12 +79,50 @@
         return [self parseStringLiteral];
     }
     
-    if (ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == '[' || ch == ']' ||
-        ch == ',' || ch == ';' || ch == ':' || ch == '?' || ch == '@') { // @ 为装饰器
+    if (ch == '('){
         [self.stream next];
-        return [Token createWithKind:TokenKindSeperator text:[NSString stringWithFormat:@"%c",ch]];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.OpenParen);
     }
-    
+    else if (ch == ')'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.CloseParen);
+    }
+    else if (ch == '{'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.OpenBrace);
+    }
+    else if (ch == '}'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.CloseBrace);
+    }
+    else if (ch == '['){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.OpenBracket);
+    }
+    else if (ch == ']'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.CloseBracket);
+    }
+    else if (ch == ':'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.Colon);
+    }
+    else if (ch == ';'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Seperator.SemiColon);
+    }
+    else if (ch == ','){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Op.Comma);
+    }
+    else if (ch == '?'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Op.QuestionMark);
+    }
+    else if (ch == '@'){
+        [self.stream next];
+        return NToken(TokenKind.Seperator, SChar(ch),pos,Op.At);
+    }
 
     /*
      解析数字字面量，语法是：
@@ -123,11 +165,12 @@
                 [literal appendFormat:@"%c", ch];
                 ch1 = self.stream.peek;
             }
+            pos.end = self.stream.pos + 1;
             // 返回一个小数
-            return [Token createWithKind:TokenKindDecimalLiteral text:literal];
+            return NToken(TokenKind.DecimalLiteral, literal,pos,0);
         } else {
             // 返回一个整型数
-            return [Token createWithKind:TokenKindIntegerLiteral text:literal];
+            return NToken(TokenKind.IntegerLiteral, literal,pos,0);
         }
     }
     
@@ -142,22 +185,24 @@
                 [literal appendFormat:@"%c", ch];
                 ch1 = self.stream.peek;
             }
+            pos.end = self.stream.pos + 1;
             // 返回一个小数
-            return [Token createWithKind:TokenKindDecimalLiteral text:literal];
+            return NToken(TokenKind.DecimalLiteral, literal,pos,0);
         } else if(ch1 == '.') {
             // ... 省略号
             [self.stream next];
             
             ch1 = self.stream.peek;
             if (ch1 == '.') {
-                return [Token createWithKind:TokenKindSeperator text:@"..."];
+                pos.end = self.stream.pos + 1;
+                return NToken(TokenKind.Seperator, @"...",pos, 0);
             } else {
                 NSLog(@"Unrecognized pattern : .., missed a . ?");
                 return [self getAToken];
             }
         } else {
             // . 号分隔符   如：this.value
-            return [Token createWithKind:TokenKindSeperator text:@"."];
+            return NToken(TokenKind.Seperator, @".",pos, 0);
         }
     }
     
@@ -178,10 +223,10 @@
         
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"/="];
+            pos.end = self.stream.pos + 1;
+            return NToken(TokenKind.Operator, @"/=",pos,Op.DivideAssign);
         }
-        
-        return [Token createWithKind:TokenKindOperator text:@"/"];
+        return NToken(TokenKind.Operator, @"/", pos, Op.Divide);
     }
     
     if (ch == '+') {
@@ -189,13 +234,15 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '+') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"++"];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"++", pos, Op.Inc);
         }
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"+="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"+=", pos, Op.PlusAssign);
         }
-        return [Token createWithKind:TokenKindOperator text:@"+"];
+        return NToken(TokenKind.Operator, @"+", pos, Op.Plus);
     }
     if (ch == '-') {
         [self.stream next];
@@ -485,24 +532,5 @@
     });
     return set;
 }
-#pragma mark 数组 util methods
-- (Token *)tokenAtIndex:(NSInteger)idx {
-    if (self.tokens.count == 0) {
-        return nil;
-    }
-    
-    if (idx >= self.tokens.count || idx < 0) {
-        return nil;
-    }
-    return [self.tokens objectAtIndex:idx];
-}
 
-- (Token *)tokenShift {
-    if (self.tokens.count == 0) {
-        return nil;
-    }
-    id obj = self.tokens.firstObject;
-    [self.tokens removeObjectAtIndex:0];
-    return obj;
-}
 @end
