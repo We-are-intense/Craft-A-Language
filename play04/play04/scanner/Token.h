@@ -6,11 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Position.h"
+
 
 #define SEqual(aa, bb) [aa isEqualToString:bb]
+#define SChar(cc) [NSString stringWithFormat:@"%c",cc]
 
 #define NewToken(aa,bb) [Token createWithKind:aa text:bb]
 #define NewTokenWord(aa,bb) [Token createWithKind:aa text:@#bb]
+
+#define NToken(aa, bb, cc, dd) [Token createWithKind:aa text:bb pos:cc code:dd]
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,10 +38,17 @@ typedef NS_ENUM(NSInteger, TokenKind) {
 
 @interface Token : NSObject
 
+@property (nonatomic, assign, readonly) NSUInteger kind;
+@property (nonatomic, copy,   readonly) NSString *text;
+@property (nonatomic, copy,   readonly) Position *pos;
+
 + (instancetype)createWithKind:(TokenKind)kind text:(NSString *)text;
 
-@property (nonatomic, assign, readonly) TokenKind kind;
-@property (nonatomic, copy, readonly) NSString *text;
++ (instancetype)createWithKind:(NSUInteger)kind
+                          text:(NSString *)text
+                           pos:(Position *)pos
+                          code:(NSUInteger)code;
+
 
 @end
 

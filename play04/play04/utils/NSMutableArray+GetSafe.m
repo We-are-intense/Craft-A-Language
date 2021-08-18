@@ -9,7 +9,7 @@
 
 @implementation NSMutableArray (GetSafe)
 
-- (id)objectAtIndexedSubscript:(NSUInteger)idx {
+- (id)index:(NSUInteger)idx {
     if (self.count == 0) {
         return nil;
     }
@@ -17,7 +17,7 @@
     if (idx >= self.count || idx < 0) {
         return nil;
     }
-    return [self objectAtIndex:idx];
+    return self[idx];
 }
 
 - (id)shift {

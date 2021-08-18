@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSMutableArray (GetSafe)
 
+- (id)index:(NSUInteger)idx;
+
 /// 返回第一个元素并删除
 - (id)shift;
 

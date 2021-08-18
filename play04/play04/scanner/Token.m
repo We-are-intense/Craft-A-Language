@@ -6,13 +6,12 @@
 //
 
 #import "Token.h"
-#import "Keyword.h"
 
 
 @interface Token ()
-@property (nonatomic, assign, readwrite) TokenKind kind;
-@property (nonatomic, copy, readwrite) NSString *text;
-
+@property (nonatomic, assign, readwrite) NSUInteger kind;
+@property (nonatomic, copy,   readwrite) NSString *text;
+@property (nonatomic, copy,   readwrite) Position *pos;
 @end
 
 @implementation Token
@@ -21,13 +20,21 @@
     Token *token = Token.new;
     token.kind = kind;
     token.text = text;
-    
-    NSInteger c = Keyword.Function;
-    NSInteger d = Keyword.Break;
-    
-    
+
     return token;
 }
+
++ (instancetype)createWithKind:(NSUInteger)kind
+                          text:(NSString *)text
+                           pos:(Position *)pos
+                          code:(NSUInteger)code {
+    Token *token = Token.new;
+    token.kind = kind;
+    token.text = text;
+    token.pos = pos;
+    return token;
+}
+
 
 
 @end

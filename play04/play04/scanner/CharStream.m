@@ -6,6 +6,7 @@
 //
 
 #import "CharStream.h"
+#import "TokenKind.h"
 
 @interface CharStream ()
 
@@ -25,6 +26,9 @@
         _data = [data copy];
         _line = 1;
     }
+    
+    
+    
     return self;
 }
 
