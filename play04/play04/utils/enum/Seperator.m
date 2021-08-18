@@ -7,15 +7,25 @@
 
 #import "Seperator.h"
 
+InnerEnum(aa,
+          OpenBracket=0,
+          CloseBracket,
+          OpenParen,
+          CloseParen,
+          OpenBrace,
+          CloseBrace,
+          Colon,
+          SemiColon)
+
 @implementation Seperator
 
-EnumKindImp(OpenBracket,    0)  ///<  [
-EnumKindImp(CloseBracket,   1)  ///<  ]
-EnumKindImp(OpenParen,      2)  ///<  (
-EnumKindImp(CloseParen,     3)  ///<  )
-EnumKindImp(OpenBrace,      4)  ///<  {
-EnumKindImp(CloseBrace,     5)  ///<  }
-EnumKindImp(Colon,          6)  ///<  :
-EnumKindImp(SemiColon,      7)  ///<  ;
+EnumKindImp(OpenBracket)    ///<  [
+EnumKindImp(CloseBracket)   ///<  ]
+EnumKindImp(OpenParen)      ///<  (
+EnumKindImp(CloseParen)     ///<  )
+EnumKindImp(OpenBrace)      ///<  {
+EnumKindImp(CloseBrace)     ///<  }
+EnumKindImp(Colon)          ///<  :
+EnumKindImp(SemiColon)      ///<  ;
 
 @end

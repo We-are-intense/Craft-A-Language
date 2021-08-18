@@ -7,17 +7,31 @@
 
 #import "TokenKind.h"
 
+InnerEnum(aa,
+          Keyword,
+          Identifier,
+          StringLiteral,
+          IntegerLiteral,
+          DecimalLiteral,
+          NullLiteral,
+          BooleanLiteral,
+          Seperator,
+          Operator,
+          EOFF
+          )
+
+
 @implementation TokenKind
 
-EnumKindImp(Keyword,        0)
-EnumKindImp(Identifier,     1)
-EnumKindImp(StringLiteral,  2)
-EnumKindImp(IntegerLiteral, 3)
-EnumKindImp(DecimalLiteral, 4)
-EnumKindImp(NullLiteral,    5)
-EnumKindImp(BooleanLiteral, 6)
-EnumKindImp(Seperator,      7)
-EnumKindImp(Operator,       8)
-EnumKindImp(EOFF,           9)
+EnumKindImp(Keyword       )
+EnumKindImp(Identifier    )
+EnumKindImp(StringLiteral )
+EnumKindImp(IntegerLiteral)
+EnumKindImp(DecimalLiteral)
+EnumKindImp(NullLiteral   )
+EnumKindImp(BooleanLiteral)
+EnumKindImp(Seperator     )
+EnumKindImp(Operator      )
+EnumKindImp(EOFF          )
 
 @end

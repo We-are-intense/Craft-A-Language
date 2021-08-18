@@ -1,0 +1,98 @@
+//
+//  Op.m
+//  play04
+//
+//  Created by xiaerfei on 2021/8/17.
+//
+
+#import "Op.h"
+InnerEnum(aa,
+          QuestionMark = 100,
+          Ellipsis,
+          Dot,
+          Comma,
+          At,
+          RightShiftArithmetic,
+          LeftShiftArithmetic,
+          RightShiftLogical,
+          IdentityEquals,
+          IdentityNotEquals,
+          BitNott,
+          BitAndd,
+          BitXOr,
+          BitOrr,
+          Not,
+          And,
+          Or,
+          Assign,
+          MultiplyAssign,
+          DivideAssign,
+          ModulusAssign,
+          PlusAssign,
+          MinusAssign,
+          LeftShiftArithmeticAssign,
+          RightShiftArithmeticAssign,
+          RightShiftLogicalAssign,
+          BitAndAssign,
+          BitXorAssign,
+          BitOrAssign,
+          ARROW,
+          Inc,
+          Dec,
+          Plus,
+          Minus,
+          Multiply,
+          Divide,
+          Modulus,
+          EQ,
+          NE,
+          G,
+          GE,
+          L,
+          LE,
+          )
+@implementation Op
+EnumKindImp(QuestionMark)
+EnumKindImp(Ellipsis)
+EnumKindImp(Dot)
+EnumKindImp(Comma)
+EnumKindImp(At)
+EnumKindImp(RightShiftArithmetic)
+EnumKindImp(LeftShiftArithmetic)
+EnumKindImp(RightShiftLogical)
+EnumKindImp(IdentityEquals)
+EnumKindImp(IdentityNotEquals)
+EnumKindImp(BitNott)
+EnumKindImp(BitAndd)
+EnumKindImp(BitXOr)
+EnumKindImp(BitOrr)
+EnumKindImp(Not)
+EnumKindImp(And)
+EnumKindImp(Or)
+EnumKindImp(Assign)
+EnumKindImp(MultiplyAssign)
+EnumKindImp(DivideAssign)
+EnumKindImp(ModulusAssign)
+EnumKindImp(PlusAssign)
+EnumKindImp(MinusAssign)
+EnumKindImp(LeftShiftArithmeticAssign)
+EnumKindImp(RightShiftArithmeticAssign)
+EnumKindImp(RightShiftLogicalAssign)
+EnumKindImp(BitAndAssign)
+EnumKindImp(BitXorAssign)
+EnumKindImp(BitOrAssign)
+EnumKindImp(ARROW)
+EnumKindImp(Inc)
+EnumKindImp(Dec)
+EnumKindImp(Plus)
+EnumKindImp(Minus)
+EnumKindImp(Multiply)
+EnumKindImp(Divide)
+EnumKindImp(Modulus)
+EnumKindImp(EQ)
+EnumKindImp(NE)
+EnumKindImp(G)
+EnumKindImp(GE)
+EnumKindImp(L)
+EnumKindImp(LE)
+@end

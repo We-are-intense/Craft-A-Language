@@ -43,6 +43,7 @@
 		413766D926CBBDA00023966B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766D026CBBD9F0023966B /* Keyword.m */; };
 		413766DF26CBBDF10023966B /* TokenKind.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766DE26CBBDF10023966B /* TokenKind.m */; };
 		413766E426CBC0160023966B /* Seperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766E326CBC0160023966B /* Seperator.m */; };
+		4EB3FA4326CBFAEC00250B97 /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3FA4226CBFAEC00250B97 /* Op.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -132,6 +133,8 @@
 		413766E226CBC0160023966B /* Seperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Seperator.h; sourceTree = "<group>"; };
 		413766E326CBC0160023966B /* Seperator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Seperator.m; sourceTree = "<group>"; };
 		413766E626CBC0C90023966B /* helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = helper.h; sourceTree = "<group>"; };
+		4EB3FA4126CBFAEC00250B97 /* Op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = "<group>"; };
+		4EB3FA4226CBFAEC00250B97 /* Op.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Op.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +296,8 @@
 				413766DE26CBBDF10023966B /* TokenKind.m */,
 				413766E226CBC0160023966B /* Seperator.h */,
 				413766E326CBC0160023966B /* Seperator.m */,
+				4EB3FA4126CBFAEC00250B97 /* Op.h */,
+				4EB3FA4226CBFAEC00250B97 /* Op.m */,
 			);
 			path = enum;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				413766D926CBBDA00023966B /* Keyword.m in Sources */,
 				413766C226CBBD660023966B /* DecimalLiteral.m in Sources */,
 				413766D826CBBDA00023966B /* Scanner.m in Sources */,
+				4EB3FA4326CBFAEC00250B97 /* Op.m in Sources */,
 				413766DF26CBBDF10023966B /* TokenKind.m in Sources */,
 				413766BD26CBBD660023966B /* Block.m in Sources */,
 				413766BF26CBBD660023966B /* FunctionDecl.m in Sources */,

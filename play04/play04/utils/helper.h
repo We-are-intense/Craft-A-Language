@@ -10,9 +10,14 @@
 
 #define EnumKind(aa) + (NSInteger)aa;
 
-#define EnumKindImp(aa, bb) \
+#define EnumKindImp(aa) \
 + (NSInteger)aa { \
-    return bb; \
+    return aa; \
 }
+
+#define InnerEnum(aa, ...) \
+typedef NS_ENUM(NSInteger, aa) {\
+    __VA_ARGS__ \
+};
 
 #endif /* helper_h */
