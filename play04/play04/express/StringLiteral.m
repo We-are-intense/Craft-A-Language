@@ -1,15 +1,15 @@
 //
-//  BooleanLiteral.m
+//  StringLiteral.m
 //  play03
 //
 //  Created by 夏二飞 on 2021/8/13.
 //
 
-#import "BooleanLiteral.h"
+#import "StringLiteral.h"
 #import "AstVisitor.h"
 
-@implementation BooleanLiteral
-- (instancetype)initWithValue:(NSNumber *)value {
+@implementation StringLiteral
+- (instancetype)initWithValue:(NSString *)value {
     self = [super init];
     if (self) {
         _value = value;
@@ -17,8 +17,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitBooleanLiteral:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitStringLiteral:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {

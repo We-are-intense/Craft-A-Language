@@ -4,9 +4,9 @@
  */
 function sayHello(){
     let a:number = 5;
-    let b = 0;
+    let b = 3;
     let c = 0;
-    c = b = a;
+    c = a + b;
     println("in func");
     println(c);
 }

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Block : AstNode
+@interface Block : Statement
 
 @property (nonatomic, copy, readonly) NSArray <Statement *> *stmts;
 

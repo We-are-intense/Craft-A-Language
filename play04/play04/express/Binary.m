@@ -22,8 +22,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitBinary:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitBinary:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {

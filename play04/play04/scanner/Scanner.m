@@ -10,6 +10,7 @@
 #import "TokenKind.h"
 #import "Op.h"
 #import "Seperator.h"
+#import "Keyword.h"
 
 @interface Scanner ()
 
@@ -249,13 +250,15 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '-') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"--"];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"--", pos, Op.Dec);
         }
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"-="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"-=", pos, Op.MinusAssign);
         }
-        return [Token createWithKind:TokenKindOperator text:@"-"];
+        return NToken(TokenKind.Operator, @"-", pos, Op.Minus);
     }
     
     if (ch == '*') {
@@ -263,9 +266,10 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"*="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"*=", pos, Op.MultiplyAssign);
         }
-        return [Token createWithKind:TokenKindOperator text:@"*"];
+        return NToken(TokenKind.Operator, @"*", pos, Op.Multiply);
     }
     
     if (ch == '%') {
@@ -273,9 +277,10 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"%="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"%=", pos, Op.ModulusAssign);
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"%"];
+            return NToken(TokenKind.Operator, @"%", pos, Op.Modulus);
         }
     }
     
@@ -284,7 +289,8 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@">="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @">=", pos, Op.GE);
         } else if (ch1 == '>') {
             [self.stream next];
             ch1 = self.stream.peek;
@@ -293,18 +299,22 @@
                 ch1 = self.stream.peek;
                 if (ch1 == '=') {
                     [self.stream next];
-                    return [Token createWithKind:TokenKindOperator text:@">>>="];
+                    pos.end = self.stream.pos+1;
+                    return NToken(TokenKind.Operator, @">>>=", pos, Op.RightShiftLogicalAssign);
                 } else {
-                    return [Token createWithKind:TokenKindOperator text:@">>>"];
+                    pos.end = self.stream.pos+1;
+                    return NToken(TokenKind.Operator, @">>>", pos, Op.RightShiftLogical);
                 }
             } else if (ch1 == '=') {
                 [self.stream next];
-                return [Token createWithKind:TokenKindOperator text:@">>="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @">>=", pos, Op.LeftShiftArithmeticAssign);
             } else {
-                return [Token createWithKind:TokenKindOperator text:@">>"];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @">>", pos, Op.RightShiftArithmetic);
             }
         } else {
-            return [Token createWithKind:TokenKindOperator text:@">"];
+            return NToken(TokenKind.Operator, @">", pos, Op.G);
         }
     }
     
@@ -313,18 +323,21 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"<="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"<=", pos, Op.LE);
         } else if (ch1 == '<') {
             [self.stream next];
             ch1 = self.stream.peek;
             if (ch1 == '=') {
                 [self.stream next];
-                return [Token createWithKind:TokenKindOperator text:@"<<="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"<<=", pos, Op.LeftShiftArithmeticAssign);
             } else {
-                return [Token createWithKind:TokenKindOperator text:@"<<"];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"<<", pos, Op.LeftShiftArithmetic);
             }
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"<"];
+            return NToken(TokenKind.Operator, @"<", pos, Op.L);
         }
     }
     
@@ -336,16 +349,19 @@
             ch1 = self.stream.peek;
             if (ch1 == '=') {
                 [self.stream next];
-                return [Token createWithKind:TokenKindOperator text:@"==="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"===", pos, Op.IdentityEquals);
             } else {
-                return [Token createWithKind:TokenKindOperator text:@"=="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"==", pos, Op.EQ);
             }
         } else if(ch1 == '>')  {
             // 箭头 =>
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"=>"];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"=>", pos, Op.ARROW);
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"="];
+            return NToken(TokenKind.Operator, @"=", pos, Op.Assign);
         }
     }
     
@@ -357,13 +373,15 @@
             ch1 = self.stream.peek;
             if (ch1 == '=') {
                 [self.stream next];
-                return [Token createWithKind:TokenKindOperator text:@"!=="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"!==", pos, Op.IdentityNotEquals);
             } else {
                 [self.stream next];
-                return [Token createWithKind:TokenKindOperator text:@"!="];
+                pos.end = self.stream.pos+1;
+                return NToken(TokenKind.Operator, @"!=", pos, Op.NE);
             }
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"!"];
+            return NToken(TokenKind.Operator, @"!", pos, Op.Not);
         }
     }
     
@@ -372,12 +390,14 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '|') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"||"];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"||", pos, Op.Or);
         } else if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"|="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"|=", pos, Op.BitOrAssign);
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"|"];
+            return NToken(TokenKind.Operator, @"|", pos, Op.BitOrr);
         }
     }
     
@@ -387,12 +407,14 @@
         
         if (ch1 == '&') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"&&"];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"&&", pos, Op.And);
         } else if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"&="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"&=", pos, Op.BitAndAssign);;
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"&"];
+            return NToken(TokenKind.Operator, @"&", pos, Op.BitAndd);
         }
     }
     
@@ -401,15 +423,16 @@
         unichar ch1 = self.stream.peek;
         if (ch1 == '=') {
             [self.stream next];
-            return [Token createWithKind:TokenKindOperator text:@"^="];
+            pos.end = self.stream.pos+1;
+            return NToken(TokenKind.Operator, @"^=", pos, Op.BitXorAssign);
         } else {
-            return [Token createWithKind:TokenKindOperator text:@"^"];
+            return NToken(TokenKind.Operator, @"^", pos, Op.BitXOr);
         }
     }
     
     if (ch == '~') {
         [self.stream next];
-        return [Token createWithKind:TokenKindOperator text:@"~"];
+        return NToken(TokenKind.Operator, @"~", pos, Op.BitNott);
     }
     
     // 暂时去掉不能识别的字符
@@ -419,7 +442,9 @@
 }
 #pragma mark 解析标识符。从标识符中还要挑出关键字。
 - (Token *)parseIdentifer {
-    TokenKind kind = TokenKindIdentifier;
+    NSUInteger kind = TokenKind.Identifier;
+    Position *pos = self.stream.getPosition;
+    NSUInteger code = 0;
     NSString *text = @"";
     // 第一个字符不用判断，因为在调用者那里已经判断过了
     text = [text stringByAppendingFormat:@"%c", self.stream.next];
@@ -428,19 +453,28 @@
            [self isLetterDigitOrUnderScore:self.stream.peek]) {
         text = [text stringByAppendingFormat:@"%c", self.stream.next];
     }
+    pos.end = self.stream.pos+1;
     // 识别出关键字
-    if ([self.KeyWords containsObject:text]) {
-        kind = TokenKindKeyword;
+    if (self.KeyWords[text]) {
+        kind = TokenKind.Keyword;
+        code = self.KeyWords[text].integerValue;
     } else if (SEqual(text, @"null")) {
-        kind = TokenKindNullLiteral;
+        kind = TokenKind.NullLiteral;
+        code = Keyword.Null;
     } else if (SEqual(text, @"true") || SEqual(text, @"false")) {
-        kind = TokenKindBooleanLiteral;
+        kind = TokenKind.BooleanLiteral;
+        code = Keyword.True;
+    } else if ( SEqual(text, @"false") ) {
+        kind = TokenKind.BooleanLiteral;
+        code = Keyword.False;
     }
-    return [Token createWithKind:kind text:text];;
+    return NToken(kind, text, pos, code);
 }
 #pragma mark 解析标识符。从标识符中还要挑出关键字。
 - (Token *)parseStringLiteral {
-    TokenKind kind = TokenKindStringLiteral;
+    NSUInteger kind = TokenKind.StringLiteral;
+    Position *pos = self.stream.getPosition;
+    NSUInteger code = 0;
     NSString *text = @"";
     // 第一个字符不用判断，因为在调用者那里已经判断过了
     [self.stream next];
@@ -456,7 +490,8 @@
     } else {
         NSLog(@"Expecting an \" at line: %ld col: %ld", self.stream.line, self.stream.col);
     }
-    return [Token createWithKind:kind text:text];;
+    pos.end = self.stream.pos+1;
+    return NToken(kind, text, pos, code);
 }
 
 #pragma mark 跳过空白字符串
@@ -514,21 +549,53 @@
 }
 
 #pragma mark 关键字集合
-- (NSSet *)KeyWords {
-    static NSSet *set = nil;
+- (NSDictionary <NSString *,NSNumber *>*)KeyWords {
+    static NSDictionary *set = nil;
     static dispatch_once_t onceToken;
+    
     dispatch_once(&onceToken, ^{
-        set = [NSSet setWithArray:@[
-            @"function",  @"class",     @"break",       @"delete",    @"return",
-            @"case",      @"do",        @"if",          @"switch",    @"var",
-            @"catch",     @"else",      @"in",          @"this",      @"void",
-            @"continue",  @"false",     @"instanceof",  @"throw",     @"while",
-            @"debugger",  @"finally",   @"new",         @"true",      @"with",
-            @"default",   @"for",       @"null",        @"try",       @"typeof",
+        set = @{
+            @"function":@(Keyword.Function),
+            @"class":@(Keyword.Cls),
+            @"break":@(Keyword.Break),
+            @"delete":@(Keyword.Delete),
+            @"return":@(Keyword.Return),
+            @"case":@(Keyword.Case),
+            @"do":@(Keyword.Do),
+            @"if":@(Keyword.If),
+            @"switch":@(Keyword.Switch),
+            @"var":@(Keyword.Var),
+            @"catch":@(Keyword.Catch),
+            @"else":@(Keyword.Else),
+            @"in":@(Keyword.In),
+            @"this":@(Keyword.This),
+            @"void":@(Keyword.Void),
+            @"continue":@(Keyword.Continue),
+            @"false":@(Keyword.False),
+            @"instanceof":@(Keyword.Instanceof),
+            @"throw":@(Keyword.Throw),
+            @"while":@(Keyword.While),
+            @"debugger":@(Keyword.Debuggerr),
+            @"finally":@(Keyword.Finally),
+            @"new":@(Keyword.New),
+            @"true":@(Keyword.True),
+            @"with":@(Keyword.With),
+            @"default":@(Keyword.Default),
+            @"for":@(Keyword.For),
+            @"null":@(Keyword.Null),
+            @"try":@(Keyword.Try),
+            @"typeof":@(Keyword.Typeof),
             //下面这些用于严格模式
-            @"implements",@"let",       @"private",     @"public",    @"yield",
-            @"interface", @"package",   @"protected",   @"static"
-        ]];
+            @"implements":@(Keyword.Implements),
+            @"let":@(Keyword.Let),
+            @"private":@(Keyword.Private),
+            @"public":@(Keyword.Public),
+            @"yield":@(Keyword.Yield),
+            @"interface":@(Keyword.Interface),
+            @"package":@(Keyword.Package),
+            @"protected":@(Keyword.Protected),
+            @"static":@(Keyword.Static),
+        };
     });
     return set;
 }

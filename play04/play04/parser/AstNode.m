@@ -9,6 +9,18 @@
 
 @implementation AstNode
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode {
+    self = [super init];
+    if (self) {
+        _beginPos = beginPos;
+        _endPos   = endPos;
+        _isErrorNode = isErrorNode;
+    }
+    return self;
+}
+
 - (void)dump:(NSString *)prefix {
     
 }
@@ -17,5 +29,8 @@
     return nil;
 }
 
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return nil;
+}
 
 @end

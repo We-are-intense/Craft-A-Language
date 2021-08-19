@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
                         initi:(Expression *)initi;
 
 - (void)dump:(NSString *)prefix;
-- (id)accept:(AstVisitor *)visitor;
+- (id)accept:(AstVisitor *)visitor additional:(id)additional;
 
 @end
 

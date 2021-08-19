@@ -12,6 +12,6 @@ function sayHello(){
 //调用刚才声明的函数
 sayHello();
 
-let t = 2 + 3 % 5 * 6 / 7;
+let t = 2 * ( 3 % 5 ) * 6 / 7;
 println("out func");
 println(t);

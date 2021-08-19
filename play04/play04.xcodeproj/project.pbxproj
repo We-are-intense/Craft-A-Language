@@ -42,6 +42,13 @@
 		4137673526CCB0000023966B /* VariableDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672726CCB0000023966B /* VariableDecl.m */; };
 		4137673626CCB0000023966B /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672826CCB0000023966B /* Block.m */; };
 		4137673A26CCCC9F0023966B /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137673926CCCC9F0023966B /* Position.m */; };
+		4137674526CE300B0023966B /* CallSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674426CE300B0023966B /* CallSignature.m */; };
+		4137674926CE302A0023966B /* ParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674826CE302A0023966B /* ParameterList.m */; };
+		4137674E26CE34E30023966B /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674D26CE34E30023966B /* Type.m */; };
+		4137675C26CE3FC30023966B /* ReturnStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675B26CE3FC30023966B /* ReturnStatement.m */; };
+		4137676026CE41AF0023966B /* IfStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675F26CE41AF0023966B /* IfStatement.m */; };
+		4137676426CE439D0023966B /* ForStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676326CE439D0023966B /* ForStatement.m */; };
+		4137676926CE48250023966B /* Scope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676826CE48250023966B /* Scope.m */; };
 		4EA2D4A326CD2E450060E01B /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2D4A226CD2E450060E01B /* Op.m */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +137,20 @@
 		4137672926CCB0000023966B /* IntegerLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegerLiteral.h; sourceTree = "<group>"; };
 		4137673826CCCC9F0023966B /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		4137673926CCCC9F0023966B /* Position.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
+		4137674326CE300B0023966B /* CallSignature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallSignature.h; sourceTree = "<group>"; };
+		4137674426CE300B0023966B /* CallSignature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallSignature.m; sourceTree = "<group>"; };
+		4137674726CE302A0023966B /* ParameterList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterList.h; sourceTree = "<group>"; };
+		4137674826CE302A0023966B /* ParameterList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterList.m; sourceTree = "<group>"; };
+		4137674C26CE34E30023966B /* Type.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		4137674D26CE34E30023966B /* Type.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		4137675A26CE3FC30023966B /* ReturnStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReturnStatement.h; sourceTree = "<group>"; };
+		4137675B26CE3FC30023966B /* ReturnStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReturnStatement.m; sourceTree = "<group>"; };
+		4137675E26CE41AF0023966B /* IfStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IfStatement.h; sourceTree = "<group>"; };
+		4137675F26CE41AF0023966B /* IfStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IfStatement.m; sourceTree = "<group>"; };
+		4137676226CE439D0023966B /* ForStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForStatement.h; sourceTree = "<group>"; };
+		4137676326CE439D0023966B /* ForStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForStatement.m; sourceTree = "<group>"; };
+		4137676726CE48250023966B /* Scope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scope.h; sourceTree = "<group>"; };
+		4137676826CE48250023966B /* Scope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scope.m; sourceTree = "<group>"; };
 		4EA2D4A126CD2E450060E01B /* Op.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = "<group>"; };
 		4EA2D4A226CD2E450060E01B /* Op.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Op.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +185,9 @@
 		4137665126CBBD2D0023966B /* play04 */ = {
 			isa = PBXGroup;
 			children = (
+				4137676626CE480D0023966B /* scope */,
+				4137675126CE37080023966B /* express */,
+				4137674B26CE34CD0023966B /* type */,
 				4137668A26CBBD660023966B /* ast */,
 				4137666026CBBD660023966B /* parser */,
 				4137667F26CBBD660023966B /* scanner */,
@@ -252,32 +276,26 @@
 		4137668A26CBBD660023966B /* ast */ = {
 			isa = PBXGroup;
 			children = (
-				4137671F26CCB0000023966B /* Binary.h */,
-				4137671426CCB0000023966B /* Binary.m */,
 				4137671B26CCB0000023966B /* Block.h */,
 				4137672826CCB0000023966B /* Block.m */,
-				4137671726CCB0000023966B /* BooleanLiteral.h */,
-				4137672526CCB0000023966B /* BooleanLiteral.m */,
-				4137671A26CCB0000023966B /* DecimalLiteral.h */,
-				4137671D26CCB0000023966B /* DecimalLiteral.m */,
 				4137671926CCB0000023966B /* Decl.h */,
 				4137672126CCB0000023966B /* Decl.m */,
-				4137671E26CCB0000023966B /* Expression.h */,
-				4137672426CCB0000023966B /* Expression.m */,
-				4137671C26CCB0000023966B /* ExpressionStatement.h */,
-				4137672226CCB0000023966B /* ExpressionStatement.m */,
 				4137672026CCB0000023966B /* FunctionDecl.h */,
 				4137671226CCB0000023966B /* FunctionDecl.m */,
-				4137672926CCB0000023966B /* IntegerLiteral.h */,
-				4137672326CCB0000023966B /* IntegerLiteral.m */,
-				4137671826CCB0000023966B /* NullLiteral.h */,
-				4137671026CCAFFF0023966B /* NullLiteral.m */,
-				4137672626CCB0000023966B /* StringLiteral.h */,
-				4137671326CCB0000023966B /* StringLiteral.m */,
 				4137671626CCB0000023966B /* Variable.h */,
 				4137671126CCB0000023966B /* Variable.m */,
 				4137671526CCB0000023966B /* VariableDecl.h */,
 				4137672726CCB0000023966B /* VariableDecl.m */,
+				4137674326CE300B0023966B /* CallSignature.h */,
+				4137674426CE300B0023966B /* CallSignature.m */,
+				4137674726CE302A0023966B /* ParameterList.h */,
+				4137674826CE302A0023966B /* ParameterList.m */,
+				4137675A26CE3FC30023966B /* ReturnStatement.h */,
+				4137675B26CE3FC30023966B /* ReturnStatement.m */,
+				4137675E26CE41AF0023966B /* IfStatement.h */,
+				4137675F26CE41AF0023966B /* IfStatement.m */,
+				4137676226CE439D0023966B /* ForStatement.h */,
+				4137676326CE439D0023966B /* ForStatement.m */,
 			);
 			path = ast;
 			sourceTree = "<group>";
@@ -295,6 +313,47 @@
 				413766E326CBC0160023966B /* Seperator.m */,
 			);
 			path = enum;
+			sourceTree = "<group>";
+		};
+		4137674B26CE34CD0023966B /* type */ = {
+			isa = PBXGroup;
+			children = (
+				4137674C26CE34E30023966B /* Type.h */,
+				4137674D26CE34E30023966B /* Type.m */,
+			);
+			path = type;
+			sourceTree = "<group>";
+		};
+		4137675126CE37080023966B /* express */ = {
+			isa = PBXGroup;
+			children = (
+				4137671F26CCB0000023966B /* Binary.h */,
+				4137671426CCB0000023966B /* Binary.m */,
+				4137671726CCB0000023966B /* BooleanLiteral.h */,
+				4137672526CCB0000023966B /* BooleanLiteral.m */,
+				4137671A26CCB0000023966B /* DecimalLiteral.h */,
+				4137671D26CCB0000023966B /* DecimalLiteral.m */,
+				4137671E26CCB0000023966B /* Expression.h */,
+				4137672426CCB0000023966B /* Expression.m */,
+				4137671C26CCB0000023966B /* ExpressionStatement.h */,
+				4137672226CCB0000023966B /* ExpressionStatement.m */,
+				4137672926CCB0000023966B /* IntegerLiteral.h */,
+				4137672326CCB0000023966B /* IntegerLiteral.m */,
+				4137671826CCB0000023966B /* NullLiteral.h */,
+				4137671026CCAFFF0023966B /* NullLiteral.m */,
+				4137672626CCB0000023966B /* StringLiteral.h */,
+				4137671326CCB0000023966B /* StringLiteral.m */,
+			);
+			path = express;
+			sourceTree = "<group>";
+		};
+		4137676626CE480D0023966B /* scope */ = {
+			isa = PBXGroup;
+			children = (
+				4137676726CE48250023966B /* Scope.h */,
+				4137676826CE48250023966B /* Scope.m */,
+			);
+			path = scope;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4137676926CE48250023966B /* Scope.m in Sources */,
 				4137670C26CCAE990023966B /* Symbol.m in Sources */,
 				4137673226CCB0000023966B /* IntegerLiteral.m in Sources */,
 				413766D626CBBDA00023966B /* Token.m in Sources */,
@@ -366,6 +426,8 @@
 				4137672A26CCB0000023966B /* NullLiteral.m in Sources */,
 				4137665326CBBD2D0023966B /* main.m in Sources */,
 				413766F826CC98D60023966B /* FunctionCall.m in Sources */,
+				4137674E26CE34E30023966B /* Type.m in Sources */,
+				4137674926CE302A0023966B /* ParameterList.m in Sources */,
 				4137673026CCB0000023966B /* Decl.m in Sources */,
 				4137670D26CCAE990023966B /* RefResolver.m in Sources */,
 				413766F726CC98D60023966B /* AstNode.m in Sources */,
@@ -376,6 +438,8 @@
 				413766FA26CC98D60023966B /* Parser.m in Sources */,
 				4137673126CCB0000023966B /* ExpressionStatement.m in Sources */,
 				4137672E26CCB0000023966B /* Binary.m in Sources */,
+				4137675C26CE3FC30023966B /* ReturnStatement.m in Sources */,
+				4137674526CE300B0023966B /* CallSignature.m in Sources */,
 				4137672D26CCB0000023966B /* StringLiteral.m in Sources */,
 				413766AE26CBBD660023966B /* Intepretor.m in Sources */,
 				4137672F26CCB0000023966B /* DecimalLiteral.m in Sources */,
@@ -383,8 +447,10 @@
 				413766AF26CBBD660023966B /* LeftValue.m in Sources */,
 				413766D926CBBDA00023966B /* Keyword.m in Sources */,
 				413766D826CBBDA00023966B /* Scanner.m in Sources */,
+				4137676026CE41AF0023966B /* IfStatement.m in Sources */,
 				413766DF26CBBDF10023966B /* TokenKind.m in Sources */,
 				4137673526CCB0000023966B /* VariableDecl.m in Sources */,
+				4137676426CE439D0023966B /* ForStatement.m in Sources */,
 				413766FD26CC98D60023966B /* FunctionBody.m in Sources */,
 				4137670B26CCAE990023966B /* Enter.m in Sources */,
 				413766B026CBBD660023966B /* AstVisitor.m in Sources */,

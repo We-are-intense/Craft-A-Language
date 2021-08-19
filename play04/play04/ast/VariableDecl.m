@@ -30,8 +30,8 @@
     }
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitVariableDecl:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitVariableDecl:self additional:additional];
 }
 
 

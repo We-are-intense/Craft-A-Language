@@ -17,8 +17,8 @@
     }
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitProg:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitProg:self additional:additional];
 }
 
 @end

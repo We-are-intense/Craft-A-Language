@@ -1,14 +1,15 @@
 //
-//  StringLiteral.m
+//  IntegerLiteral.m
 //  play03
 //
 //  Created by 夏二飞 on 2021/8/13.
 //
 
-#import "StringLiteral.h"
+#import "IntegerLiteral.h"
 #import "AstVisitor.h"
 
-@implementation StringLiteral
+@implementation IntegerLiteral
+
 - (instancetype)initWithValue:(NSNumber *)value {
     self = [super init];
     if (self) {
@@ -17,11 +18,13 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitStringLiteral:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitIntegerLiteral:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {
     NSLog(@"%@%@", prefix, self.value);
 }
+
+
 @end

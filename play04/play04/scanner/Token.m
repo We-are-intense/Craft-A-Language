@@ -11,7 +11,7 @@
 @interface Token ()
 @property (nonatomic, assign, readwrite) NSUInteger kind;
 @property (nonatomic, copy,   readwrite) NSString *text;
-@property (nonatomic, copy,   readwrite) Position *pos;
+@property (nonatomic, strong, readwrite) Position *pos;
 @end
 
 @implementation Token

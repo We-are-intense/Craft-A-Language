@@ -23,8 +23,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitFunctionDecl:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitFunctionDecl:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {

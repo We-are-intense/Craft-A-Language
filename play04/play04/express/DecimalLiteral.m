@@ -1,15 +1,14 @@
 //
-//  IntegerLiteral.m
+//  DecimalLiteral.m
 //  play03
 //
 //  Created by 夏二飞 on 2021/8/13.
 //
 
-#import "IntegerLiteral.h"
+#import "DecimalLiteral.h"
 #import "AstVisitor.h"
 
-@implementation IntegerLiteral
-
+@implementation DecimalLiteral
 - (instancetype)initWithValue:(NSNumber *)value {
     self = [super init];
     if (self) {
@@ -18,13 +17,12 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitIntegerLiteral:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitDecimalLiteral:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {
     NSLog(@"%@%@", prefix, self.value);
 }
-
 
 @end

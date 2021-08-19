@@ -27,8 +27,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitFunctionCall:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitFunctionCall:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {

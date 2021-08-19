@@ -17,5 +17,20 @@
     return self;
 }
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name {
+    self = [super initWithBeginPos:beginPos
+                            endPos:endPos
+                       isErrorNode:isErrorNode];
+    if (self) {
+        _name = [name copy];
+    }
+    return self;
+}
+
+
+
 
 @end

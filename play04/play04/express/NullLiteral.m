@@ -16,8 +16,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitNullLiteral:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitNullLiteral:self additional:additional];
 }
 
 - (void)dump:(NSString *)prefix {

@@ -18,7 +18,10 @@
 #import "NullLiteral.h"
 #import "BooleanLiteral.h"
 #import "Variable.h"
-
+#import "ParameterList.h"
+#import "CallSignature.h"
+#import "ReturnStatement.h"
+#import "IfStatement.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class Prog;
@@ -27,21 +30,25 @@ NS_ASSUME_NONNULL_BEGIN
  * 这是一个基类，定义了缺省的遍历方式。子类可以覆盖某些方法，修改遍历方式。
  */
 @interface AstVisitor : NSObject
-- (id)visit:(AstNode * _Nullable)node;
-- (id)visitProg:(Prog *)prog;
-- (id)visitVariableDecl:(VariableDecl *)variableDecl;
-- (id)visitBinary:(Binary *)exp;
-- (id)visitIntegerLiteral:(IntegerLiteral *)exp;
-- (id)visitDecimalLiteral:(DecimalLiteral *)exp;
-- (id)visitStringLiteral:(StringLiteral *)exp;
-- (id)visitNullLiteral:(NullLiteral *)exp;
-- (id)visitBooleanLiteral:(BooleanLiteral *)exp;
-- (id)visitVariable:(Variable *)exp;
-- (id)visitBlock:(Block *)block;
-- (id)visitFunctionDecl:(FunctionDecl *)functionDecl;
-- (id)visitFunctionBody:(FunctionBody *)functionBody;
-- (id)visitFunctionCall:(FunctionCall *)functionCall;
-- (id)visitExpressionStatement:(ExpressionStatement *)stmt;
+- (id)visit:(AstNode * _Nullable)node additional:(id _Nullable)additional;
+- (id)visitProg:(Prog *)prog additional:(id _Nullable)additional;
+- (id)visitVariableDecl:(VariableDecl *)variableDecl additional:(id _Nullable)additional;
+- (id)visitBinary:(Binary *)exp additional:(id _Nullable)additional;
+- (id)visitIntegerLiteral:(IntegerLiteral *)exp additional:(id _Nullable)additional;
+- (id)visitDecimalLiteral:(DecimalLiteral *)exp additional:(id _Nullable)additional;
+- (id)visitStringLiteral:(StringLiteral *)exp additional:(id _Nullable)additional;
+- (id)visitNullLiteral:(NullLiteral *)exp additional:(id _Nullable)additional;
+- (id)visitBooleanLiteral:(BooleanLiteral *)exp additional:(id _Nullable)additional;
+- (id)visitVariable:(Variable *)exp additional:(id _Nullable)additional;
+- (id)visitBlock:(Block *)block additional:(id _Nullable)additional;
+- (id)visitFunctionDecl:(FunctionDecl *)functionDecl additional:(id _Nullable)additional;
+- (id)visitFunctionBody:(FunctionBody *)functionBody additional:(id _Nullable)additional;
+- (id)visitFunctionCall:(FunctionCall *)functionCall additional:(id _Nullable)additional;
+- (id)visitExpressionStatement:(ExpressionStatement *)stmt additional:(id _Nullable)additional;
+- (id)visitParameterList:(ParameterList *)paramList additional:(id _Nullable)additional;
+- (id)visitCallSignature:(CallSignature *)callSignature additional:(id _Nullable)additional;
+- (id)visitReturnStatement:(ReturnStatement *)stmt additional:(id _Nullable)additional;
+- (id)visitIfStatement:(IfStatement *)stmt additional:(id _Nullable)additional;
 @end
 
 NS_ASSUME_NONNULL_END

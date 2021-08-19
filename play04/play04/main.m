@@ -41,12 +41,12 @@ int main(int argc, const char * argv[]) {
         Prog *prog = [parser parseProg];
         SymTable *symTable =SymTable.new;
         // 建立符号表
-        [[[Enter alloc] initWithSymTable:symTable] visit:prog];
+        [[[Enter alloc] initWithSymTable:symTable] visit:prog additional:nil];
         // 引用消解
-        [[[RefResolver alloc] initWithSymTable:symTable] visit:prog];
+        [[[RefResolver alloc] initWithSymTable:symTable] visit:prog additional:nil];
         
         // 运行程序
-        id retVal = [[Intepretor new] visitProg:prog];
+        id retVal = [[Intepretor new] visitProg:prog additional:nil];
 
         NSLog(@"--------------- %@", retVal);
     }

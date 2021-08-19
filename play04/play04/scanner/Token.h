@@ -37,11 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, readonly) NSUInteger kind;
 @property (nonatomic, copy,   readonly) NSString *text;
-@property (nonatomic, copy,   readonly) Position *pos;
+@property (nonatomic, strong, readonly) Position *pos;
 
 + (instancetype)createWithKind:(NSUInteger)kind
                           text:(NSString *)text
-                           pos:(Position *)pos
+                           pos:(nullable Position * )pos
                           code:(NSUInteger)code;
 
 

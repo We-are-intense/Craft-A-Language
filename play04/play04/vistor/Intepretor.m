@@ -19,14 +19,14 @@
     return self;
 }
 
-- (id)visitFunctionDecl:(FunctionDecl *)functionDecl {
+- (id)visitFunctionDecl:(FunctionDecl *)functionDecl additional:(id)additional {
     return nil;
 }
 
-- (id)visitFunctionCall:(FunctionCall *)functionCall {
+- (id)visitFunctionCall:(FunctionCall *)functionCall additional:(id)additional {
     if ([functionCall.name isEqualToString:@"println"]) {
         if (functionCall.parameters.count > 0) {
-            LeftValue *retVal = [self visit:functionCall.parameters[0]];
+            LeftValue *retVal = [self visit:functionCall.parameters[0] additional:additional];
             if ([retVal isKindOfClass:LeftValue.class] && retVal.variable) {
                 retVal = [self getVariableValue:retVal.variable.name];
             }
@@ -38,15 +38,15 @@
     } else {
         if (functionCall.decl) {
             // 找到函数定义，继续遍历函数体
-            return [self visitBlock:functionCall.decl.body];
+            return [self visitBlock:functionCall.decl.body additional:additional];
         }
     }
     return nil;
 }
 
-- (id)visitVariableDecl:(VariableDecl *)variableDecl {
+- (id)visitVariableDecl:(VariableDecl *)variableDecl additional:(id)additional {
     if (variableDecl.initi) {
-        LeftValue *v = [self visit:variableDecl.initi];
+        LeftValue *v = [self visit:variableDecl.initi additional:additional];
         if ([self isLeftValue:v]) {
             v = [self getVariableValue:v.variable.name];
         }
@@ -60,10 +60,10 @@
     return [[LeftValue alloc] initWithVariable:v];
 }
 
-- (id)visitBinary:(Binary *)bi {
+- (id)visitBinary:(Binary *)bi additional:(id)additional {
     id ret = nil;
-    id v1 = [self visit:bi.exp1];
-    id v2 = [self visit:bi.exp2];
+    id v1 = [self visit:bi.exp1 additional:additional];
+    id v2 = [self visit:bi.exp2 additional:additional];
     LeftValue *v1Left = nil;
     LeftValue *v2Left = nil;
     

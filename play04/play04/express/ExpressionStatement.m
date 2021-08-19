@@ -18,8 +18,8 @@
     return self;
 }
 
-- (id)accept:(AstVisitor *)visitor {
-    return [visitor visitExpressionStatement:self];
+- (id)accept:(AstVisitor *)visitor additional:(id)additional {
+    return [visitor visitExpressionStatement:self additional:additional];
 }
 
 @end
