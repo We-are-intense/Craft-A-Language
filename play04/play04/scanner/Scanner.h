@@ -21,12 +21,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Scanner : NSObject
 
 @property (nonatomic, strong, readonly) CharStream *stream;
+@property (nonatomic, strong, readonly) Position *lastPos;
+
 
 - (instancetype)initWithStream:(CharStream *)stream;
 
 - (Token *)next;
 - (Token *)peek;
 - (Token *)peek2;
+/// 获取接下来的Token的位置
+- (Position *)getNextPos;
+/// 获取前一个Token的position
+- (Position *)getLastPos;
+
 @end
 
 NS_ASSUME_NONNULL_END

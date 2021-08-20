@@ -16,9 +16,9 @@
     self = [super init];
     if (self) {
         _begin = begin;
-        _end = end;
-        _line = line;
-        _col = col;
+        _end   = end;
+        _line  = line;
+        _col   = col;
     }
     
     return self;

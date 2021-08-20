@@ -12,6 +12,7 @@
 @property (nonatomic, assign, readwrite) NSUInteger kind;
 @property (nonatomic, copy,   readwrite) NSString *text;
 @property (nonatomic, strong, readwrite) Position *pos;
+@property (nonatomic, assign, readwrite) NSUInteger code;
 @end
 
 @implementation Token
@@ -23,7 +24,8 @@
     Token *token = Token.new;
     token.kind = kind;
     token.text = text;
-    token.pos = pos;
+    token.pos  = pos;
+    token.code = code;
     return token;
 }
 

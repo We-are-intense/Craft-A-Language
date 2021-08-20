@@ -17,31 +17,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-//typedef NS_ENUM(NSInteger, TokenKind) {
-//    TokenKindKeyword,        /// <  关键字
-//    TokenKindIdentifier,     /// <  标识符
-//    TokenKindStringLiteral,  /// <  字符串
-//    TokenKindIntegerLiteral, /// <  整数
-//    TokenKindDecimalLiteral, /// <  小数
-//    TokenKindNullLiteral,    /// <  nil
-//    TokenKindBooleanLiteral, /// <  布尔值
-//    TokenKindSeperator,      /// <  分隔符
-//    TokenKindOperator,       /// <  运算符
-//    TokenKindEOF            /// <  结束
-//};
-
-
-
 @interface Token : NSObject
 
 @property (nonatomic, assign, readonly) NSUInteger kind;
 @property (nonatomic, copy,   readonly) NSString *text;
 @property (nonatomic, strong, readonly) Position *pos;
+@property (nonatomic, assign, readonly) NSUInteger code;
 
 + (instancetype)createWithKind:(NSUInteger)kind
                           text:(NSString *)text
-                           pos:(nullable Position * )pos
+                           pos:(nullable Position *)pos
                           code:(NSUInteger)code;
 
 

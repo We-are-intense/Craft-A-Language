@@ -10,22 +10,46 @@
     当前语法规则：
     prog = statementList? EOF;
     statementList = (variableDecl | functionDecl | expressionStatement)+ ;
+    statement:  block
+                | expressionStatement
+                | returnStatement
+                | ifStatement
+                | forStatement
+                | emptyStatement
+                | functionDecl
+                | variableDecl ;
+    
+    block : '{' statementList? '}' ;
 
-    variableDecl : 'let' Identifier typeAnnotation？ ('=' singleExpression) ';';
+    ifStatement : 'if' '(' expression ')' statement ('else' statement)? ;
+    forStatement : 'for' '(' (expression | 'let' variableDecl)? ';' expression? ';' expression? ')' statement ;
+    
+    variableStatement : 'let' variableDecl ';';
+    variableDecl : Identifier typeAnnotation？ ('=' expression)? ;
     typeAnnotation : ':' typeName;
-
-    functionDecl: "function" Identifier "(" ")"  functionBody;
-    functionBody : '{' statementList? '}' ;
-
-    statement: functionDecl | expressionStatement;
+    
+    functionDecl: "function" Identifier callSignature  block ;
+    callSignature: '(' parameterList? ')' typeAnnotation? ;
+    returnStatement: 'return' expression? ';' ;
+    
+    emptyStatement: ';' ;
+ 
     expressionStatement: expression ';' ;
-    expression: primary (binOP primary)* ;
+    expression: assignment;
+    assignment: binary (assignmentOp binary)* ;
+    binary: unary (binOp unary)* ;
+    unary: primary | prefixOp unary | primary postfixOp ;
     primary: StringLiteral | DecimalLiteral | IntegerLiteral | functionCall | '(' expression ')' ;
-    binOP: '+' | '-' | '*' | '/' | '=' | '+=' | '-=' | '*=' | '/=' | '==' | '!=' | '<=' | '>=' | '<'
-       | '>' | '&&'| '||'|...;
-
-    functionCall : Identifier '(' parameterList? ')' ;
-    parameterList : expression (',' expression)* ;
+ 
+ 
+    assignmentOp: '=' | '+=' | '-=' | '*=' | '/=' | '>>=' | '<<=' | '>>>=' | '^=' | '|=' ;
+   
+    binOp: '+' | '-' | '*' | '/' | '==' | '!=' | '<=' | '>=' | '<'
+         | '>' | '&&'| '||'|...;
+    prefixOp = '+' | '-' | '++' | '--' | '!' | '~';
+    postfixOp = '++' | '--';
+    functionCall : Identifier '(' argumentList? ')' ;
+    argumentList : expression (',' expression)* ;
  
  */
 
@@ -36,6 +60,10 @@
 #import "FunctionCall.h"
 #import "FunctionBody.h"
 #import "TokenKind.h"
+#import "Keyword.h"
+#import "Seperator.h"
+#import "CallSignature.h"
+
 @interface Parser ()
 
 @property (nonatomic, strong) Scanner *scanner;
@@ -78,16 +106,20 @@
 
 - (Statement *)parseStatement {
     Token *t = self.scanner.peek;
-    if (t.kind == TokenKind.Keyword && SEqual(t.text, @"function")) {
-        // 这是个函数声明
+    if (t.code == Keyword.Function) {
         return [self parseFunctionDecl];
-    } else if(SEqual(t.text, @"let")) {
-        return [self parseVariableDecl];
+    } else if(t.code == Keyword.Let) {
+        return [self parseVariableStatement];
+    } else if (t.code == Keyword.Return) {
+        return [self parseReturnStatement];
+    } else if (t.code == Seperator.OpenBrace) {
+        // '{'
+        return [self parseBlock];
     } else if (t.kind == TokenKind.Identifier ||
                t.kind == TokenKind.DecimalLiteral ||
                t.kind == TokenKind.IntegerLiteral ||
                t.kind == TokenKind.StringLiteral ||
-               SEqual(t.text, @"(")) {
+               t.code == Seperator.OpenParen) { // '('
         return [self parseExpressionStatement];
     }
     
@@ -200,12 +232,27 @@
  * 返回值为： FunctionDecl *，这里先写 id 类型
  */
 - (id)parseFunctionDecl {
+    Position *beginPos = self.scanner.getNextPos;
+    BOOL isErrorNode   = NO;
     // 跳过关键字'function'
     [self.scanner next];
     Token *token = self.scanner.next;
+    if (token.kind != TokenKind.Identifier) {
+        [self addError:[NSString stringWithFormat:@"Expecting a function name, while we got a %@", token.text] pos:self.scanner.getLastPos];
+        [self skip:nil];
+        isErrorNode = YES;
+    }
+    
+    
+    
+    
+    
+    
+    
+    // TODO: 下面的代码即将被删除
     if (token.kind == TokenKind.Identifier) {
         Token *t1 = self.scanner.next;
-        if ([t1.text isEqualToString:@"("]) {
+        if (t1.code == Seperator.OpenParen) { // '('
             Token *t2 = self.scanner.next;
             if ([t2.text isEqualToString:@")"]) {
                 Block *body = [self parseFunctionBody];
@@ -292,6 +339,16 @@
 
     return nil;
 }
+#pragma mark 解析变量声明语句
+/**
+ * 解析变量声明语句
+ * variableStatement : 'let' variableDecl ';';
+ */
+- (id)parseVariableStatement {
+    return nil;
+}
+
+
 /**
  * 解析变量声明
  * 语法规则：
@@ -340,6 +397,33 @@
         NSLog(@"Expecting variable name in VariableDecl, while we meet %@", t.text);
         return nil;
     }
+}
+#pragma mark Return语句
+/**
+ * Return语句
+ * 无论是否出错都会返回一个ReturnStatement。
+ */
+- (id)parseReturnStatement {
+    return nil;
+}
+
+#pragma mark 解析函数体
+/**
+ * 解析函数体
+ * 语法规则：
+ * block : '{' statementList? '}' ;
+*/
+- (id)parseBlock {
+    return nil;
+}
+
+#pragma mark 添加语法错误
+- (void)addError:(NSString *)msg pos:(Position *)pos {
+    
+}
+#pragma mark 添加语法报警
+- (void)addWarning:(NSString *)msg pos:(Position *)pos {
+    
 }
 
 #pragma mark - private methods
@@ -396,7 +480,10 @@
     return -1;
 }
 
-
+- (void)skip:( NSArray <NSString *> * _Nullable )seperators {
+    if (!seperators) { return; }
+    
+}
 
 
 

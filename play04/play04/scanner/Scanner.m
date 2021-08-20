@@ -15,6 +15,8 @@
 @interface Scanner ()
 
 @property (nonatomic, strong) NSMutableArray <Token *> *tokens;
+///< 前一个Token的位置
+@property (nonatomic, strong, readwrite) Position *lastPos;
 
 @end
 
@@ -25,6 +27,8 @@
     if (self) {
         _stream = stream;
         _tokens = [NSMutableArray array];
+        // 这个Position是不合法的，只是为了避免null
+        _lastPos = NPosition(0, 0, 0, 0);
     }
     return self;
 }
@@ -32,10 +36,10 @@
 - (Token *)next {
     Token *t = self.tokens.shift;
     if (t == nil) {
-        return [self getAToken];
-    } else {
-        return t;
+        t = [self getAToken];
     }
+    self.lastPos = t.pos;
+    return t;
 }
 
 - (Token *)peek {
@@ -59,6 +63,16 @@
     return t;
 }
 
+/// 获取接下来的Token的位置
+- (Position *)getNextPos {
+    return self.peek.pos;
+}
+
+/// 获取前一个Token的position
+- (Position *)getLastPos {
+    return self.lastPos;
+}
+
 #pragma mark - private methods
 #pragma mark 从字符串流中获取一个新Token
 - (Token *)getAToken {
@@ -67,7 +81,6 @@
     Position *pos = self.stream.getPosition;
     // 遇到结束符
     if (self.stream.eof) {
-//        return [Token createWithKind:TokenKindEOF text:@""];
         return NToken(TokenKind.EOFF, @"", nil, 0);
     }
 
