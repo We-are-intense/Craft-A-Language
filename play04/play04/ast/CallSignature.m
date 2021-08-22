@@ -13,11 +13,11 @@
 - (instancetype)initWithBeginPos:(Position *)beginPos
                           endPos:(Position *)endPos
                      isErrorNode:(BOOL)isErrorNode
-                       paramList:(ParameterList *)paramList
-                            type:(Type *)type {
+                       paramList:(ParameterList * _Nullable)params
+                            type:(Type * _Nullable)type; {
     self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode];
     if (self) {
-        self.paramList = paramList;
+        self.paramList = params;
         self.type = type;
     }
     return self;

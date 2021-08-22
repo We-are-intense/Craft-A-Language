@@ -21,6 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
                      varType:(NSString *)varType
                         initi:(Expression *)initi;
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name
+                         varType:(NSString *)varType
+                           initi:(Expression * _Nullable)initi;
+
 - (void)dump:(NSString *)prefix;
 - (id)accept:(AstVisitor *)visitor additional:(id)additional;
 

@@ -8,6 +8,8 @@
 #import "Intepretor.h"
 #import "LeftValue.h"
 #import "Token.h"
+#import "Op.h"
+
 @implementation Intepretor
 
 - (instancetype)init
@@ -89,7 +91,8 @@
         6: BOOL
      */
     NSInteger type = [self numberTypeWithV1:v1 v2:v2];
-    if (SEqual(bi.op, @"+")) {
+    
+    if (bi.op == Op.Plus) { // +
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] + [v2 integerValue]);
         } else if (type == 3) {
@@ -101,7 +104,7 @@
         } else {
             NSAssert(NO, @"运算符 + ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"-")) {
+    } else if (bi.op == Op.Minus) { // -
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] - [v2 integerValue]);
         } else if (type == 3) {
@@ -111,7 +114,7 @@
         } else {
             NSAssert(NO, @"运算符 - ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"*")) {
+    } else if (bi.op == Op.Multiply) {// *
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] * [v2 integerValue]);
         } else if (type == 3) {
@@ -121,7 +124,7 @@
         } else {
             NSAssert(NO, @"运算符 * ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"/")) {
+    } else if (bi.op == Op.Divide) {// /
         if (type == 2 || type == 5) {
             NSAssert([v2 integerValue] != 0, @"除数不能为零");
             ret = @([v1 integerValue] / [v2 integerValue]);
@@ -134,14 +137,14 @@
         } else {
             NSAssert(NO, @"运算符 / ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"%")) {
+    } else if (bi.op == Op.Modulus) {// %
         if (type == 2 || type == 5) {
             NSAssert([v2 integerValue] != 0, @"除数不能为零");
             ret = @([v1 integerValue] % [v2 integerValue]);
         } else {
             NSAssert(NO, @"运算符 %% ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @">")) {
+    } else if (bi.op == Op.G) {// '>'
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] > [v2 integerValue]);
         } else if (type == 3) {
@@ -151,7 +154,7 @@
         } else {
             NSAssert(NO, @"运算符 > ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @">=")) {
+    } else if (bi.op == Op.GE) { // '>='
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] >= [v2 integerValue]);
         } else if (type == 3) {
@@ -161,7 +164,7 @@
         } else {
             NSAssert(NO, @"运算符 >= ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"<")) {
+    } else if (bi.op == Op.L) {// '<'
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] < [v2 integerValue]);
         } else if (type == 3) {
@@ -171,7 +174,7 @@
         } else {
             NSAssert(NO, @"运算符 < ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"<=")) {
+    } else if (bi.op == Op.LE) {// '<='
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] <= [v2 integerValue]);
         } else if (type == 3) {
@@ -181,7 +184,7 @@
         } else {
             NSAssert(NO, @"运算符 <= ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"&&")) {
+    } else if (bi.op == Op.EQ) { // '&&'
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] && [v2 integerValue]);
         } else if (type == 3) {
@@ -191,7 +194,7 @@
         } else {
             NSAssert(NO, @"运算符 && ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"||")) {
+    } else if (bi.op == Op.Or) { // '||'
         if (type == 2 || type == 5) {
             ret = @([v1 integerValue] || [v2 integerValue]);
         } else if (type == 3) {
@@ -201,14 +204,18 @@
         } else {
             NSAssert(NO, @"运算符 || ：左右值类型错误");
         }
-    } else if (SEqual(bi.op, @"=")) {
+    } else if (bi.op == Op.Assign) { // '='
         if (v1Left) {
             [self setVariableValue:v1Left.variable.name value:v2];
         } else {
             NSLog(@"Assignment need a left value: ");
         }
+    } else if(bi.op == Op.EQ) { // '=='
+        
+    } else if(bi.op == Op.NE) { // '!='
+        
     } else {
-        NSLog(@"Unsupported binary operation: %@", bi.op);
+        NSLog(@"Unsupported binary operation: %ld", bi.op);
     }
     return ret;
 }

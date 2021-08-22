@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Type : NSObject
 
+@property (nonatomic, copy) NSString *name;
+
+- (instancetype)initWithName:(NSString *)name;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,6 +23,20 @@
     return self;
 }
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name
+                            body:(Block * _Nullable)body
+                   callSignature:(CallSignature * _Nullable)callSignature {
+    self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode name:name];
+    if (self) {
+        _body = body;
+        _callSignature = callSignature;
+    }
+    return self;
+}
+
 - (id)accept:(AstVisitor *)visitor additional:(id)additional {
     return [visitor visitFunctionDecl:self additional:additional];
 }

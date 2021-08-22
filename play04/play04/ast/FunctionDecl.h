@@ -8,13 +8,21 @@
 #import "Decl.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@class Block;
+@class Block, CallSignature;
 
 @interface FunctionDecl : Decl
 
 @property (nonatomic, strong, readonly) Block *body;
+@property (nonatomic, strong, readonly) CallSignature *callSignature;
 
 - (instancetype)initWithName:(NSString *)name body:(Block * _Nullable)body;
+
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name
+                            body:(Block * _Nullable)body
+                   callSignature:(CallSignature * _Nullable)callSignature;
 
 @end
 

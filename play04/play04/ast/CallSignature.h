@@ -22,8 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithBeginPos:(Position *)beginPos
                           endPos:(Position *)endPos
                      isErrorNode:(BOOL)isErrorNode
-                       paramList:(ParameterList *)paramList
-                            type:(Type *)type;
+                       paramList:(ParameterList * _Nullable)paramList
+                            type:(Type * _Nullable)type;
 
 
 @end

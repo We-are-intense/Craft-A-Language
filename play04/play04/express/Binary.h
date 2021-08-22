@@ -11,11 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Binary : Expression
 
-@property (nonatomic, copy, readonly) NSString *op; ///< 运算符
-@property (nonatomic, copy, readonly) Expression *exp1; ///< 左边的表达式
-@property (nonatomic, copy, readonly) Expression *exp2; ///< 右边的表达式
+@property (nonatomic, assign, readonly) NSInteger op; ///< 运算符
+@property (nonatomic, copy,   readonly) Expression *exp1; ///< 左边的表达式
+@property (nonatomic, copy,   readonly) Expression *exp2; ///< 右边的表达式
 
-- (instancetype)initWithOp:(NSString *)op
+- (instancetype)initWithOp:(NSInteger)op
                       exp1:(Expression *)exp1
                       exp2:(Expression *)exp2;
 

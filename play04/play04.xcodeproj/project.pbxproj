@@ -49,6 +49,9 @@
 		4137676026CE41AF0023966B /* IfStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675F26CE41AF0023966B /* IfStatement.m */; };
 		4137676426CE439D0023966B /* ForStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676326CE439D0023966B /* ForStatement.m */; };
 		4137676926CE48250023966B /* Scope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676826CE48250023966B /* Scope.m */; };
+		4E021D7C26D20DF000FD7B08 /* SimpleType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7B26D20DF000FD7B08 /* SimpleType.m */; };
+		4E021D7F26D23E1500FD7B08 /* SysTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7E26D23E1500FD7B08 /* SysTypes.m */; };
+		4E021D8226D2718A00FD7B08 /* VariableStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D8126D2718A00FD7B08 /* VariableStatement.m */; };
 		4EA2D4A326CD2E450060E01B /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2D4A226CD2E450060E01B /* Op.m */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +154,12 @@
 		4137676326CE439D0023966B /* ForStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForStatement.m; sourceTree = "<group>"; };
 		4137676726CE48250023966B /* Scope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scope.h; sourceTree = "<group>"; };
 		4137676826CE48250023966B /* Scope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scope.m; sourceTree = "<group>"; };
+		4E021D7A26D20DF000FD7B08 /* SimpleType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleType.h; sourceTree = "<group>"; };
+		4E021D7B26D20DF000FD7B08 /* SimpleType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleType.m; sourceTree = "<group>"; };
+		4E021D7D26D23E1500FD7B08 /* SysTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysTypes.h; sourceTree = "<group>"; };
+		4E021D7E26D23E1500FD7B08 /* SysTypes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SysTypes.m; sourceTree = "<group>"; };
+		4E021D8026D2718A00FD7B08 /* VariableStatement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariableStatement.h; sourceTree = "<group>"; };
+		4E021D8126D2718A00FD7B08 /* VariableStatement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VariableStatement.m; sourceTree = "<group>"; };
 		4EA2D4A126CD2E450060E01B /* Op.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = "<group>"; };
 		4EA2D4A226CD2E450060E01B /* Op.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Op.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +305,8 @@
 				4137675F26CE41AF0023966B /* IfStatement.m */,
 				4137676226CE439D0023966B /* ForStatement.h */,
 				4137676326CE439D0023966B /* ForStatement.m */,
+				4E021D8026D2718A00FD7B08 /* VariableStatement.h */,
+				4E021D8126D2718A00FD7B08 /* VariableStatement.m */,
 			);
 			path = ast;
 			sourceTree = "<group>";
@@ -320,6 +331,10 @@
 			children = (
 				4137674C26CE34E30023966B /* Type.h */,
 				4137674D26CE34E30023966B /* Type.m */,
+				4E021D7A26D20DF000FD7B08 /* SimpleType.h */,
+				4E021D7B26D20DF000FD7B08 /* SimpleType.m */,
+				4E021D7D26D23E1500FD7B08 /* SysTypes.h */,
+				4E021D7E26D23E1500FD7B08 /* SysTypes.m */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -423,6 +438,7 @@
 				4137673426CCB0000023966B /* BooleanLiteral.m in Sources */,
 				413766FB26CC98D60023966B /* Statement.m in Sources */,
 				413766A626CBBD660023966B /* NSMutableArray+GetSafe.m in Sources */,
+				4E021D8226D2718A00FD7B08 /* VariableStatement.m in Sources */,
 				4137672A26CCB0000023966B /* NullLiteral.m in Sources */,
 				4137665326CBBD2D0023966B /* main.m in Sources */,
 				413766F826CC98D60023966B /* FunctionCall.m in Sources */,
@@ -431,6 +447,8 @@
 				4137673026CCB0000023966B /* Decl.m in Sources */,
 				4137670D26CCAE990023966B /* RefResolver.m in Sources */,
 				413766F726CC98D60023966B /* AstNode.m in Sources */,
+				4E021D7C26D20DF000FD7B08 /* SimpleType.m in Sources */,
+				4E021D7F26D23E1500FD7B08 /* SysTypes.m in Sources */,
 				413766D526CBBDA00023966B /* CharStream.m in Sources */,
 				413766FC26CC98D60023966B /* Prog.m in Sources */,
 				4EA2D4A326CD2E450060E01B /* Op.m in Sources */,

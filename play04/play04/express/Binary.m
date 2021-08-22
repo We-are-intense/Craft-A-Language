@@ -10,12 +10,12 @@
 
 @implementation Binary
 
-- (instancetype)initWithOp:(NSString *)op
+- (instancetype)initWithOp:(NSInteger)op
                       exp1:(Expression *)exp1
                       exp2:(Expression *)exp2 {
     self = [super init];
     if (self) {
-        _op = [op copy];
+        _op = op;
         _exp1 = exp1;
         _exp2 = exp2;
     }
@@ -27,7 +27,7 @@
 }
 
 - (void)dump:(NSString *)prefix {
-    NSLog(@"%@Binary:%@", prefix, self.op);
+    NSLog(@"%@Binary:%ld", prefix, self.op);
     [self.exp1 dump:[NSString stringWithFormat:@"%@    ", prefix]];
     [self.exp2 dump:[NSString stringWithFormat:@"%@    ", prefix]];
 }

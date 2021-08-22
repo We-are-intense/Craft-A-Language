@@ -474,7 +474,7 @@
     } else if (SEqual(text, @"null")) {
         kind = TokenKind.NullLiteral;
         code = Keyword.Null;
-    } else if (SEqual(text, @"true") || SEqual(text, @"false")) {
+    } else if (SEqual(text, @"true")) {
         kind = TokenKind.BooleanLiteral;
         code = Keyword.True;
     } else if ( SEqual(text, @"false") ) {

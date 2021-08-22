@@ -63,6 +63,9 @@
 #import "Keyword.h"
 #import "Seperator.h"
 #import "CallSignature.h"
+#import "Op.h"
+#import "SysTypes.h"
+#import "VariableStatement.h"
 
 @interface Parser ()
 
@@ -126,11 +129,48 @@
     NSLog(@"Can not recognize a expression starting with: %@", self.scanner.peek.text);
     return nil;
 }
-
+#pragma mark 解析表达式
 - (Expression *)parseExpression {
-    return [self parseBinary:0];
+    return [self parseAssignment];
 }
-
+#pragma mark 解析赋值表达式
+/*
+ * 解析赋值表达式。
+ * 注意：赋值表达式是右结合的。
+ */
+- (id)parseAssignment {
+    NSInteger assignPrec = [self prec:Op.Assign];
+    // 先解析一个优先级更高的表达式
+    Expression *exp1 = [self parseBinary:assignPrec];
+    Token *t = self.scanner.peek;
+    NSInteger tprec = [self prec:t.code];
+    // 存放赋值运算符两边的表达式
+    NSMutableArray <Expression *> *expStack = [NSMutableArray array];
+    [expStack addObject:exp1];
+    // 存放赋值运算符
+    NSMutableArray <NSNumber *> *opStack = [NSMutableArray array];
+    
+    // 解析赋值表达式
+    while (t.kind == TokenKind.Operator && tprec == assignPrec) {
+        [opStack addObject:@(t.code)];
+        // 跳过运算符
+        [self.scanner next];
+        // 获取运算符优先级高于assignment的二元表达式
+        exp1 = [self parseBinary:assignPrec];
+        [expStack addObject:exp1];
+        t = self.scanner.peek;
+        tprec = [self prec:t.code];
+    }
+    // 组装成右结合的AST
+    exp1 = expStack[expStack.count - 1];
+    if (opStack.count > 0) {
+        for (NSInteger i = expStack.count - 2; i >= 0; i --) {
+            exp1 = [[Binary alloc] initWithOp:opStack[i].integerValue exp1:expStack[i] exp2:exp1];
+        }
+    }
+    return exp1;
+}
+#pragma mark 解析表达式语句 TODO
 - (ExpressionStatement *)parseExpressionStatement {
     Expression *exp = [self parseExpression];
     if (!exp) {
@@ -146,7 +186,7 @@
     NSLog(@"Expecting a semicolon at the end of an expresson statement, while we got a %@", t.text);
     return nil;
 }
-
+#pragma mark 解析二元表达式 TODO
 /**
  * 采用运算符优先级算法，解析二元表达式。
  * 这是一个递归算法。一开始，提供的参数是最低优先级，
@@ -161,7 +201,7 @@
     }
     
     Token *t = self.scanner.peek;
-    NSInteger tprec = [self prec:t.text];
+    NSInteger tprec = [self prec:t.code];
     // 下面这个循环的意思是：只要右边出现的新运算符的优先级更高，
     // 那么就把右边出现的作为右子节点。
     /**
@@ -177,17 +217,17 @@
         [self.scanner next]; // 跳过运算符
         Expression *exp2 = [self parseBinary:tprec];
         if (exp2) {
-            Binary *exp = [[Binary alloc] initWithOp:t.text exp1:exp1 exp2:exp2];
+            Binary *exp = [[Binary alloc] initWithOp:t.code exp1:exp1 exp2:exp2];
             exp1 = exp;
             t = self.scanner.peek;
-            tprec = [self prec:t.text];
+            tprec = [self prec:t.code];
         } else {
             NSLog(@"Can not recognize a expression starting with: %@", t.text);
         }
     }
     return exp1;
 }
-#pragma mark 解析基础表达式
+#pragma mark 解析基础表达式 TODO
 - (Expression *)parsePrimary {
     Token *t = self.scanner.peek;
     //知识点：以Identifier开头，可能是函数调用，也可能是一个变量，所以要再多向后看一个Token，
@@ -225,11 +265,16 @@
     }
 }
 #pragma mark 解析函数声明
-/**
+/*
  * 解析函数声明
  * 语法规则：
- * functionDecl: "function" Identifier "(" ")"  functionBody;
- * 返回值为： FunctionDecl *，这里先写 id 类型
+ * functionDecl: "function" Identifier callSignature  block ;
+ * callSignature: '(' parameterList? ')' typeAnnotation? ;
+ * parameterList : parameter (',' parameter)* ;
+ * parameter : Identifier typeAnnotation? ;
+ * block : '{' statementList? '}' ;
+ * 返回值：
+ * null-意味着解析过程出错。
  */
 - (id)parseFunctionDecl {
     Position *beginPos = self.scanner.getNextPos;
@@ -243,61 +288,42 @@
         isErrorNode = YES;
     }
     
-    
-    
-    
-    
-    
-    
-    // TODO: 下面的代码即将被删除
-    if (token.kind == TokenKind.Identifier) {
-        Token *t1 = self.scanner.next;
-        if (t1.code == Seperator.OpenParen) { // '('
-            Token *t2 = self.scanner.next;
-            if ([t2.text isEqualToString:@")"]) {
-                Block *body = [self parseFunctionBody];
-                if (body != nil) {
-                    return  [[FunctionDecl alloc] initWithName:token.text body:body];
-                }
-            } else {
-                NSLog(@"Expecting ')' in FunctionBody, while we got a %@", t2.text);
-                return nil;
-            }
-        } else {
-            NSLog(@"Expecting '(' in FunctionBody, while we got a %@", t1.text);
-            return nil;
-        }
+    // 开始解析参数列表
+    CallSignature *callSignature = nil;
+    Token *t1 = self.scanner.peek;
+    if (t1.code == Seperator.OpenParen) {
+        // '('
+        callSignature = [self parseCallSignature];
     } else {
-        NSLog(@"Expecting a function name, while we got a  %@", token.text);
-        return nil;
-    }
-    return nil;
-}
-/**
- * 解析函数体
- * 语法规则：
- * functionBody : '{' functionCall* '}' ;
- */
-- (Block *)parseFunctionBody {
-    Token *t = self.scanner.peek;
-    if ([t.text isEqualToString:@"{"]) {
-        [self.scanner next];
-        NSArray <Statement *> * stmts = [self parseStatementList];
-        t = self.scanner.next;
-        if (SEqual(t.text, @"}")) {
-            return [[Block alloc] initWithStmts:stmts];
-        } else {
-            NSLog(@"Expecting '}' in FunctionBody, while we got a %@", t.text);
-            return nil;
-        }
-    } else {
-        NSLog(@"Expecting '{' in FunctionBody, while we got a %@", t.text);
+        [self addError:[NSString stringWithFormat:@"Expecting '(' in FunctionDecl, while we got a %@", t1.text] pos:self.scanner.getLastPos];
+        [self skip:nil];
+        callSignature = [[CallSignature alloc] initWithBeginPos:beginPos
+                                                endPos:self.scanner.getLastPos
+                                           isErrorNode:YES
+                                             paramList:nil
+                                                  type:nil];
     }
     
-    return nil;
+    // 开始解析函数体
+    Block *functionBody = nil;
+    t1 = self.scanner.peek;
+    if (t1.code == Seperator.OpenBrace) { // '{'
+        functionBody = [self parseBlock];
+    } else {
+        [self addError:[NSString stringWithFormat:@"Expecting '{' in FunctionDecl, while we got a %@", t1.text] pos:self.scanner.getLastPos];
+        [self skip:nil];
+        functionBody = [[Block alloc] initWithBeginPos:beginPos endPos:self.scanner.getLastPos isErrorNode:YES stmts:nil];
+    }
+    
+    return [[FunctionDecl alloc] initWithBeginPos:beginPos
+                                           endPos:self.scanner.getLastPos
+                                      isErrorNode:NO
+                                             name:token.text
+                                             body:functionBody
+                                    callSignature:callSignature];
 }
-
-/**
+#pragma mark 解析函数调用 TODO
+/*
  * 解析函数调用
  * 语法规则：
  * functionCall : Identifier '(' parameterList? ')' ;
@@ -340,16 +366,36 @@
     return nil;
 }
 #pragma mark 解析变量声明语句
-/**
+/*
  * 解析变量声明语句
  * variableStatement : 'let' variableDecl ';';
+ * variableDecl : Identifier typeAnnotation？ ('=' expression)? ;
+ * typeAnnotation : ':' typeName;
  */
 - (id)parseVariableStatement {
-    return nil;
+    Position *beginPos = self.scanner.getNextPos;
+    BOOL isErrorNode = NO;
+    
+    [self.scanner next];// 跳过'let'
+    VariableDecl *var = [self parseVariableDecl];
+    
+    Token *t = self.scanner.peek;
+    if (t.code == Seperator.SemiColon) {
+        // 分号 ';'，结束变量声明
+        [self.scanner next];
+    } else {
+        [self skip:nil];
+        isErrorNode = YES;
+    }
+    
+    return [[VariableStatement alloc] initWithBeginPos:beginPos
+                                                endPos:self.scanner.getLastPos
+                                           isErrorNode:isErrorNode
+                                          variableDecl:var];
 }
 
-
-/**
+#pragma mark 解析变量声明 TODO
+/*
  * 解析变量声明
  * 语法规则：
  * variableDecl : 'let'? Identifier typeAnnotation？ ('=' singleExpression) ';';
@@ -399,23 +445,173 @@
     }
 }
 #pragma mark Return语句
-/**
+/*
  * Return语句
  * 无论是否出错都会返回一个ReturnStatement。
  */
 - (id)parseReturnStatement {
-    return nil;
+    Position *beginPos = self.scanner.getNextPos;
+    Expression *exp = nil;
+    // 跳过'return'
+    [self.scanner next];
+    // 解析后面的表达式
+    Token *t = self.scanner.peek;
+    if (t.code != Seperator.SemiColon) { // ';'
+        exp = [self parseExpression];
+    }
+    
+    // 跳过';'
+    t = self.scanner.peek;
+    if (t.code == Seperator.SemiColon) {
+        [self.scanner next];
+    } else {
+        [self addError:@"Expecting ';' after return statement." pos:self.scanner.getLastPos];
+    }
+    return [[ReturnStatement alloc] initWithBeginPos:beginPos
+                                              endPos:self.scanner.getLastPos
+                                         isErrorNode:NO
+                                                 exp:exp];
 }
 
 #pragma mark 解析函数体
-/**
+/*
  * 解析函数体
  * 语法规则：
  * block : '{' statementList? '}' ;
 */
 - (id)parseBlock {
+    Position *beginPos = self.scanner.getNextPos;
+    [self.scanner next];// 跳过 '{'
+    NSArray <Statement *> *stmts = [self parseStatementList];
+    Token *t = self.scanner.peek;
+    if (t.code == Seperator.CloseBrace) { // '}'
+        [self.scanner next];// 跳过 '}'
+        return [[Block alloc] initWithBeginPos:beginPos
+                                        endPos:self.scanner.getLastPos
+                                   isErrorNode:NO
+                                         stmts:stmts];
+    }
+    
+    [self addError:[NSString stringWithFormat:@"Expecting '}' while parsing a block, but we got a %@", t.text] pos:self.scanner.getLastPos];
+    [self skip:nil];
+    return [[Block alloc] initWithBeginPos:beginPos
+                                    endPos:self.scanner.getLastPos
+                               isErrorNode:YES
+                                     stmts:nil];
+}
+
+#pragma mark 解析函数签名
+/*
+ * callSignature: '(' parameterList? ')' typeAnnotation? ;
+ * typeAnnotation : ':' typeName;
+ */
+- (id)parseCallSignature {
+    Position *beginPos = self.scanner.getNextPos;
+    ParameterList *paramList = nil;
+    // 跳过 '('
+    Token *t = self.scanner.next;
+    if (self.scanner.peek.code != Seperator.CloseParen) { // ')'
+        paramList = [self parseParameterList];
+    }
+    
+    t = self.scanner.peek;
+    // 看看后面是不是 ')'
+    if (t.code == Seperator.CloseParen) {
+        [self.scanner next]; // 跳过 ')'
+        NSString *type = @"any";
+        if (self.scanner.peek.code == Seperator.Colon) {
+            // 如果是 ':'
+            type = [self parseTypeAnnotation];
+        }
+        return [[CallSignature alloc] initWithBeginPos:beginPos
+                                                endPos:self.scanner.getLastPos
+                                           isErrorNode:NO
+                                             paramList:paramList
+                                                  type:[self parseType:type]];
+    } else {
+        // 不是，说明有了问题
+        [self addError:@"Expecting a ')' after for a call signature" pos:self.scanner.getLastPos];
+        return [[CallSignature alloc] initWithBeginPos:beginPos
+                                                endPos:self.scanner.getLastPos
+                                           isErrorNode:YES
+                                             paramList:paramList
+                                                  type:nil];
+    }
     return nil;
 }
+#pragma mark 解析参数列表
+/*
+ * parameterList : parameter (',' parameter)* ;
+ * parameter : Identifier ':' Identifier;
+ */
+- (id)parseParameterList {
+    Position *beginPos = self.scanner.getNextPos;
+    NSMutableArray <VariableDecl *> *params = [NSMutableArray array];
+    BOOL isErrorNode = NO;
+    Token *t = self.scanner.peek;
+    while (t.code != Seperator.CloseParen && t.kind != TokenKind.EOFF) {
+        if (t.kind == TokenKind.Identifier) {
+            [self.scanner  next];
+            Token *t1 = self.scanner.peek;
+            NSString *type = @"any";
+            if (t1.code == Seperator.Colon) { // ':'
+                type = [self parseTypeAnnotation];
+            }
+            
+            VariableDecl *var = [[VariableDecl alloc] initWithBeginPos:beginPos endPos:self.scanner.getLastPos isErrorNode:isErrorNode name:t.text varType:type initi:nil];
+            [params addObject:var];
+            
+            t = self.scanner.peek;
+            if (t.code != Seperator.CloseParen) { // ')'
+                if (t.code == Op.Comma) { // ','
+                    [self.scanner next]; // 跳过 ','
+                    t = self.scanner.peek;
+                } else {
+                    [self addError:@"Expecting a ',' or '）' after a parameter" pos:self.scanner.getLastPos];
+                    [self skip:nil];
+                    isErrorNode = YES;
+                    Token *t2 = self.scanner.peek;
+                    if (t2.code == Op.Comma) {
+                        [self.scanner next];
+                        t = self.scanner.next;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        } else {
+            [self addError:@"Expecting an identifier as name of a Parameter" pos:self.scanner.getLastPos];
+            [self skip:nil];
+            isErrorNode = YES;
+            Token *t2 = self.scanner.peek;
+            if (t2.code == Op.Comma) {
+                [self.scanner next];
+                t = self.scanner.next;
+            } else {
+                break;
+            }
+        }
+    }
+    return [[ParameterList alloc] initWithBeginPos:beginPos endPos:self.scanner.getLastPos isErrorNode:isErrorNode params:params];
+}
+#pragma mark 解析类型注解
+/*
+ * 无论是否出错，都会返回一个类型。缺省类型是'any'。
+ */
+- (NSString *)parseTypeAnnotation {
+    NSString *type = @"any";
+    // 跳过:
+    [self.scanner  next];
+    Token *t = self.scanner.peek;
+    if (t.kind == TokenKind.Identifier) {
+        [self.scanner  next];
+        type = t.text;
+    } else {
+        [self addError:@"Expecting a type name in type annotation" pos:self.scanner.getLastPos];
+    }
+    return type;
+}
+
 
 #pragma mark 添加语法错误
 - (void)addError:(NSString *)msg pos:(Position *)pos {
@@ -428,64 +624,85 @@
 
 #pragma mark - private methods
 #pragma mark 二元运算符的优先级
-- (NSDictionary <NSString *, NSNumber *>*)opPrec {
+- (NSDictionary <NSNumber *, NSNumber *>*)opPrec {
     static NSDictionary *map = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         map = @{
-            @"=":@2,
-            @"+=":@2,
-            @"-=":@2,
-            @"*=":@2,
-            @"%=":@2,
-            @"&=":@2,
-            @"|=":@2,
-            @"^=":@2,
-            @"~=":@2,
-            @"<<=":@2,
-            @">>=":@2,
-            @">>>=":@2,
-            @"||":@4,
-            @"&&":@5,
-            @"|":@6,
-            @"^":@7,
-            @"&":@8,
-            @"==":@9,
-            @"===":@9,
-            @"!=":@9,
-            @"!==":@9,
-            @">":@10,
-            @">=":@10,
-            @"<":@10,
-            @"<=":@10,
-            @"<<":@11,
-            @">>":@11,
-            @">>>":@11,
-            @"+":@12,
-            @"-":@12,
-            @"*":@13,
-            @"/":@13,
-            @"%":@13,
+            @(Op.Assign):@2,
+            @(Op.PlusAssign):@2,
+            @(Op.MinusAssign):@2,
+            @(Op.MultiplyAssign):@2,
+            @(Op.DivideAssign):@2,
+            @(Op.ModulusAssign):@2,
+            @(Op.BitAndAssign):@2,
+            @(Op.BitOrAssign):@2,
+            @(Op.BitXorAssign):@2,
+            @(Op.LeftShiftArithmeticAssign):@2,
+            @(Op.RightShiftArithmeticAssign):@2,
+            @(Op.RightShiftLogicalAssign):@2,
+            @(Op.Or):@4,
+            @(Op.And):@5,
+            @(Op.BitOrr):@6,
+            @(Op.BitXOr):@7,
+            @(Op.BitAndd):@8,
+            @(Op.EQ):@9,
+            @(Op.IdentityEquals):@9,
+            @(Op.NE):@9,
+            @(Op.IdentityNotEquals):@9,
+            @(Op.G):@10,
+            @(Op.GE):@10,
+            @(Op.L):@10,
+            @(Op.LE):@10,
+            @(Op.LeftShiftArithmetic):@11,
+            @(Op.RightShiftArithmetic):@11,
+            @(Op.RightShiftLogical):@11,
+            @(Op.Plus):@12,
+            @(Op.Minus):@12,
+            @(Op.Divide):@13,
+            @(Op.Multiply):@13,
+            @(Op.Modulus):@13,
         };
     });
     return map;
 }
 
-- (NSInteger)prec:(NSString *)op {
-    NSNumber *p = [self opPrec][op];
+- (NSInteger)prec:(NSInteger)op {
+    NSNumber *p = [self opPrec][@(op)];
     if (p) {
         return p.integerValue;
     }
     
     return -1;
 }
-
+#pragma mark skip TODO
 - (void)skip:( NSArray <NSString *> * _Nullable )seperators {
     if (!seperators) { return; }
     
 }
 
-
+- (Type *)parseType:(NSString *)typeName {
+    
+    if (SEqual(typeName, @"any")) {
+        return SysTypes.Any;
+    } else if (SEqual(typeName, @"number")) {
+        return SysTypes.Number;
+    } else if (SEqual(typeName, @"boolean")) {
+        return SysTypes.Boolean;
+    } else if (SEqual(typeName, @"string")) {
+        return SysTypes.String;
+    } else if (SEqual(typeName, @"undefined")) {
+        return SysTypes.Undefined;
+    } else if (SEqual(typeName, @"null")) {
+        return SysTypes.Null;
+    } else if (SEqual(typeName, @"void")) {
+        return SysTypes.Undefined;
+    }
+    
+    [self addError:[NSString stringWithFormat:@"Unrecognized type: %@", typeName] pos:self.scanner.getLastPos];
+    
+    return SysTypes.Any;
+}
 
 
 @end
