@@ -82,7 +82,7 @@
     return self;
 }
 
-/**
+/*
  * 解析Prog
  * 语法规则：
  * prog = (functionDecl | functionCall)* ;
@@ -102,8 +102,6 @@
         }
         t = self.scanner.peek;
     }
-    
-    
     return stmts;
 }
 
@@ -204,7 +202,7 @@
     NSInteger tprec = [self prec:t.code];
     // 下面这个循环的意思是：只要右边出现的新运算符的优先级更高，
     // 那么就把右边出现的作为右子节点。
-    /**
+    /*
      * 对于2+3*5
      * 第一次循环，遇到+号，优先级大于零，所以做一次递归的binary
      * 在递归的binary中，遇到乘号，优先级大于+号，所以形成3*5返回，又变成上一级的右子节点。
