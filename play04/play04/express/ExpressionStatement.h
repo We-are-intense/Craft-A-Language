@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) Expression *exp;
 
 - (instancetype)initWithExp:(Expression *)exp;
-
+- (instancetype)initWithEndPos:(Position *)endPos
+                   isErrorNode:(BOOL)isErrorNode
+                           exp:(Expression *)exp;
 @end
 
 NS_ASSUME_NONNULL_END

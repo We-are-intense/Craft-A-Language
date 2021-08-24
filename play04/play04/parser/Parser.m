@@ -66,6 +66,7 @@
 #import "Op.h"
 #import "SysTypes.h"
 #import "VariableStatement.h"
+#import "Unary.h"
 
 @interface Parser ()
 
@@ -168,23 +169,25 @@
     }
     return exp1;
 }
-#pragma mark 解析表达式语句 TODO
+#pragma mark 解析表达式语句
 - (ExpressionStatement *)parseExpressionStatement {
     Expression *exp = [self parseExpression];
     if (!exp) {
         NSLog(@"Error parsing ExpressionStatement");
         return nil;
     }
-    
+    ExpressionStatement *stmt = [[ExpressionStatement alloc] initWithEndPos:self.scanner.getLastPos isErrorNode:NO exp:exp];
     Token *t = self.scanner.peek;
-    if (SEqual(t.text, @";")) {
+    if (t.code == Seperator.SemiColon) { // ';'
         [self.scanner next];
-        return [[ExpressionStatement alloc] initWithExp:exp];
+    } else {
+        [self addError:[NSString stringWithFormat:@"Expecting a semicolon at the end of an expresson statement, while we got a %@", t.text] pos:self.scanner.getLastPos];
+        stmt.endPos = self.scanner.getLastPos;
+        stmt.isErrorNode = YES;
     }
-    NSLog(@"Expecting a semicolon at the end of an expresson statement, while we got a %@", t.text);
-    return nil;
+    return stmt;
 }
-#pragma mark 解析二元表达式 TODO
+#pragma mark 解析二元表达式
 /**
  * 采用运算符优先级算法，解析二元表达式。
  * 这是一个递归算法。一开始，提供的参数是最低优先级，
@@ -192,7 +195,7 @@
  * @param prec 当前运算符的优先级
  */
 - (Expression *)parseBinary:(NSInteger)prec {
-    Expression *exp1 = [self parsePrimary];
+    Expression *exp1 = [self parseUnary];
     if (!exp1) {
         NSLog(@"Can not recognize a expression starting with: %@", self.scanner.peek.text);
         return nil;
@@ -225,17 +228,65 @@
     }
     return exp1;
 }
+#pragma mark 解析一元运算
+/*
+ * 解析一元运算
+ * unary: primary | prefixOp unary | primary postfixOp ;
+ * primary: StringLiteral | DecimalLiteral | IntegerLiteral | functionCall | '(' expression ')' ;
+ * prefixOp = '+' | '-' | '++' | '--' | '!' | '~';
+ * postfixOp = '++' | '--';
+ */
+- (id)parseUnary {
+    Position *beginPos = self.scanner.getNextPos;
+    Token *t = self.scanner.peek;
+    // 前缀的一元表达式 prefixOp unary
+    if (t.kind == TokenKind.Operator) {
+        [self.scanner next]; // 跳过运算符
+        Expression *exp = [self parseUnary];
+        return [[Unary alloc] initWithBeginPos:beginPos
+                                        endPos:self.scanner.getLastPos
+                                   isErrorNode:NO
+                                            op:t.code
+                                           exp:exp
+                                      isPrefix:YES];
+    } else {
+        // 后缀只能是 ++ 或 --
+        // 首先解析一个primary
+        Expression *exp = [self parsePrimary];
+        Token *t1 = self.scanner.peek;
+        // --, ++
+        if (t1.kind == TokenKind.Operator && (t1.code == Op.Inc || t1.code == Op.Dec)) {
+            [self.scanner next]; // 跳过运算符
+            return [[Unary alloc] initWithBeginPos:beginPos
+                                            endPos:self.scanner.getLastPos
+                                       isErrorNode:NO
+                                                op:t.code
+                                               exp:exp
+                                          isPrefix:NO];
+        } else {
+            return exp;
+        }
+    }
+    
+    return nil;
+}
+
+
 #pragma mark 解析基础表达式 TODO
 - (Expression *)parsePrimary {
+    Position *beginPos = self.scanner.getNextPos;
     Token *t = self.scanner.peek;
     //知识点：以Identifier开头，可能是函数调用，也可能是一个变量，所以要再多向后看一个Token，
     //这相当于在局部使用了LL(2)算法。
     if (t.kind == TokenKind.Identifier) {
-        if (SEqual(self.scanner.peek2.text, @"(")) {
+        if (self.scanner.peek2.code == Seperator.OpenParen) { // "("
             return [self parseFunctionCall];
         } else {
             [self.scanner next];
-            return [[Variable alloc] initWithName:t.text];
+            return [[Variable alloc] initWithBeginPos:beginPos
+                                               endPos:self.scanner.getLastPos
+                                          isErrorNode:NO
+                                                 name:t.text];
         }
     } else if(t.kind == TokenKind.IntegerLiteral) {
         [self.scanner next];

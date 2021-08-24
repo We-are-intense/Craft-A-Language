@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) VariableDecl *decl;
 
 - (instancetype)initWithName:(NSString *)name;
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(nonnull NSString *)name;
 @end
 
 NS_ASSUME_NONNULL_END

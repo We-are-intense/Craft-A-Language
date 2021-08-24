@@ -18,6 +18,16 @@
     return self;
 }
 
+- (instancetype)initWithEndPos:(Position *)endPos
+                   isErrorNode:(BOOL)isErrorNode
+                           exp:(Expression *)exp {
+    self = [super initWithBeginPos:exp.beginPos endPos:endPos isErrorNode:isErrorNode];
+    if (self) {
+        _exp = exp;
+    }
+    return self;
+}
+
 - (id)accept:(AstVisitor *)visitor additional:(id)additional {
     return [visitor visitExpressionStatement:self additional:additional];
 }
