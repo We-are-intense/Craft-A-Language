@@ -27,6 +27,19 @@
     return self;
 }
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name
+                      parameters:(NSArray <Expression *>*)parameters {
+    self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode];
+    if (self) {
+        _name = [name copy];
+        _parameters = [parameters copy];
+    }
+    return self;
+}
+
 - (id)accept:(AstVisitor *)visitor additional:(id)additional {
     return [visitor visitFunctionCall:self additional:additional];
 }

@@ -16,6 +16,16 @@
     return self;
 }
 
+- (instancetype)initWithBeginPos:(Position *)beginPos endPos:(Position *)endPos isErrorNode:(BOOL)isErrorNode {
+    self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode];
+    if (self) {
+        _value = @"null";
+        _theType = SysTypes.Null;
+    }
+    return self;
+}
+
+
 - (id)accept:(AstVisitor *)visitor additional:(id)additional {
     return [visitor visitNullLiteral:self additional:additional];
 }

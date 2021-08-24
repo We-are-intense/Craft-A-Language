@@ -6,26 +6,22 @@
 //
 
 #import "Decl.h"
-
+#import "SysTypes.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class Expression, AstVisitor;
 
 @interface VariableDecl : Decl
 ///< 变量类型
-@property (nonatomic, copy, readonly) NSString *varType;
+@property (nonatomic, copy, readonly) SimpleType *varType;
 ///< 变量初始化所使用的表达式
 @property (nonatomic, copy, readonly, nullable) Expression *initi;
-
-- (instancetype)initWithName:(NSString *)name
-                     varType:(NSString *)varType
-                        initi:(Expression *)initi;
 
 - (instancetype)initWithBeginPos:(Position *)beginPos
                           endPos:(Position *)endPos
                      isErrorNode:(BOOL)isErrorNode
                             name:(NSString *)name
-                         varType:(NSString *)varType
+                         varType:(SimpleType * _Nonnull)varType
                            initi:(Expression * _Nullable)initi;
 
 - (void)dump:(NSString *)prefix;

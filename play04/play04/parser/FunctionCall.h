@@ -29,6 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString *)name
                   parameters:( NSArray <Expression *> * _Nullable )parameters;
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                            name:(NSString *)name
+                      parameters:(NSArray <Expression *>*)parameters;
+
 @end
 
 NS_ASSUME_NONNULL_END

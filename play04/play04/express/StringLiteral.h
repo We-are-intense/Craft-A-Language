@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *value;
 
 - (instancetype)initWithValue:(NSString *)value;
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                           value:(NSString *)value;
 @end
 
 NS_ASSUME_NONNULL_END

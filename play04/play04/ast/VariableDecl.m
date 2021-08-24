@@ -10,27 +10,16 @@
 
 @implementation VariableDecl
 
-- (instancetype)initWithName:(NSString *)name
-                     varType:(NSString *)varType
-                        initi:(id)initi {
-    self = [super initWithName:name];
-    if (self) {
-        _varType = [varType copy];
-        _initi = initi;
-    }
-    return self;
-}
-
 - (instancetype)initWithBeginPos:(Position *)beginPos
                           endPos:(Position *)endPos
                      isErrorNode:(BOOL)isErrorNode
                             name:(NSString *)name
-                         varType:(NSString *)varType
+                         varType:(SimpleType *)varType
                            initi:(Expression * _Nullable )initi {
     self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode name:name];
     if (self) {
-        _varType = [varType copy];
-        _initi = initi;
+        _varType = varType;
+        _initi   = initi;
     }
     return self;
 }

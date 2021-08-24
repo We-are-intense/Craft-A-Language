@@ -11,9 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IntegerLiteral : Expression
 
-@property (nonatomic, strong, readonly) NSNumber *value;
+@property (nonatomic, strong) NSNumber *value;
 
 - (instancetype)initWithValue:(NSNumber *)value;
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                           value:(NSNumber *)value;
 
 @end
 

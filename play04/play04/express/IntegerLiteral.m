@@ -18,6 +18,17 @@
     return self;
 }
 
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                           value:(NSNumber *)value {
+    self = [super initWithBeginPos:beginPos endPos:endPos isErrorNode:isErrorNode];
+    if (self) {
+        self.value = value;
+    }
+    return self;
+}
+
 - (id)accept:(AstVisitor *)visitor additional:(id)additional {
     return [visitor visitIntegerLiteral:self additional:additional];
 }

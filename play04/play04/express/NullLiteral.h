@@ -6,11 +6,12 @@
 //
 
 #import "Expression.h"
-
+#import "SysTypes.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NullLiteral : Expression
 @property (nonatomic, strong, readonly) NSString *value;
+@property (nonatomic, strong, readonly) SimpleType *theType;
 @end
 
 NS_ASSUME_NONNULL_END
