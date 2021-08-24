@@ -114,6 +114,10 @@
         return [self parseVariableStatement];
     } else if (t.code == Keyword.Return) {
         return [self parseReturnStatement];
+    } else if (t.code == Keyword.If){
+        return [self parseReturnStatement];
+    } else if (t.code == Keyword.For){
+        return [self parseReturnStatement];
     } else if (t.code == Seperator.OpenBrace) {
         // '{'
         return [self parseBlock];
@@ -677,13 +681,30 @@
     }
     return type;
 }
+#pragma mark 解析If语句 TODO
+/*
+ * 解析If语句
+ * ifStatement : 'if' '(' expression ')' statement ('else' statement)? ;
+ */
+- (id)parseIfStatement {
+    
+    return nil;
+}
+#pragma mark 解析For语句 TODO
+/*
+ * 解析For语句
+ * forStatement : 'for' '(' expression? ';' expression? ';' expression? ')' statement ;
+ */
+- (id)parseForStatement {
+    
+    return nil;
+}
 
-
-#pragma mark 添加语法错误
+#pragma mark 添加语法错误 TODO
 - (void)addError:(NSString *)msg pos:(Position *)pos {
     
 }
-#pragma mark 添加语法报警
+#pragma mark 添加语法报警 TODO
 - (void)addWarning:(NSString *)msg pos:(Position *)pos {
     
 }
