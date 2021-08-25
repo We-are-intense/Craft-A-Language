@@ -49,8 +49,58 @@
 		4137676026CE41AF0023966B /* IfStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675F26CE41AF0023966B /* IfStatement.m */; };
 		4137676426CE439D0023966B /* ForStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676326CE439D0023966B /* ForStatement.m */; };
 		4137676926CE48250023966B /* Scope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676826CE48250023966B /* Scope.m */; };
-		413767C126D4F6080023966B /* TestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767C026D4F6080023966B /* TestCase.m */; };
 		413767CC26D4F9DA0023966B /* Unary.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767CB26D4F9DA0023966B /* Unary.m */; };
+		413767D126D5F3330023966B /* ErrorExp.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767D026D5F3330023966B /* ErrorExp.m */; };
+		413767D526D61B570023966B /* program.js in Resources */ = {isa = PBXBuildFile; fileRef = 413767D426D61B570023966B /* program.js */; };
+		413767E726D61C640023966B /* Scope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676826CE48250023966B /* Scope.m */; };
+		413767E926D61C640023966B /* Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671426CCB0000023966B /* Binary.m */; };
+		413767EB26D61C640023966B /* BooleanLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672526CCB0000023966B /* BooleanLiteral.m */; };
+		413767ED26D61C640023966B /* DecimalLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671D26CCB0000023966B /* DecimalLiteral.m */; };
+		413767EF26D61C640023966B /* Expression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672426CCB0000023966B /* Expression.m */; };
+		413767F126D61C640023966B /* ExpressionStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672226CCB0000023966B /* ExpressionStatement.m */; };
+		413767F326D61C640023966B /* IntegerLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672326CCB0000023966B /* IntegerLiteral.m */; };
+		413767F526D61C640023966B /* NullLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671026CCAFFF0023966B /* NullLiteral.m */; };
+		413767F726D61C640023966B /* StringLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671326CCB0000023966B /* StringLiteral.m */; };
+		413767F926D61C640023966B /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674D26CE34E30023966B /* Type.m */; };
+		413767FB26D61C640023966B /* SimpleType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7B26D20DF000FD7B08 /* SimpleType.m */; };
+		413767FD26D61C640023966B /* SysTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7E26D23E1500FD7B08 /* SysTypes.m */; };
+		413767FF26D61C640023966B /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672826CCB0000023966B /* Block.m */; };
+		4137680126D61C640023966B /* Decl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672126CCB0000023966B /* Decl.m */; };
+		4137680326D61C640023966B /* FunctionDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671226CCB0000023966B /* FunctionDecl.m */; };
+		4137680526D61C640023966B /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137671126CCB0000023966B /* Variable.m */; };
+		4137680726D61C640023966B /* VariableDecl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137672726CCB0000023966B /* VariableDecl.m */; };
+		4137680926D61C640023966B /* CallSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674426CE300B0023966B /* CallSignature.m */; };
+		4137680B26D61C640023966B /* ParameterList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137674826CE302A0023966B /* ParameterList.m */; };
+		4137680D26D61C640023966B /* ReturnStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675B26CE3FC30023966B /* ReturnStatement.m */; };
+		4137680F26D61C640023966B /* IfStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137675F26CE41AF0023966B /* IfStatement.m */; };
+		4137681126D61C640023966B /* ForStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137676326CE439D0023966B /* ForStatement.m */; };
+		4137681326D61C640023966B /* VariableStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D8126D2718A00FD7B08 /* VariableStatement.m */; };
+		4137681526D61C640023966B /* Unary.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767CB26D4F9DA0023966B /* Unary.m */; };
+		4137681726D61C640023966B /* ErrorExp.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767D026D5F3330023966B /* ErrorExp.m */; };
+		4137681926D61C640023966B /* AstNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EA26CC98D50023966B /* AstNode.m */; };
+		4137681B26D61C640023966B /* FunctionBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F626CC98D60023966B /* FunctionBody.m */; };
+		4137681D26D61C640023966B /* FunctionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EB26CC98D50023966B /* FunctionCall.m */; };
+		4137681F26D61C640023966B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766EE26CC98D50023966B /* Parser.m */; };
+		4137682126D61C640023966B /* Prog.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F526CC98D60023966B /* Prog.m */; };
+		4137682326D61C640023966B /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766F226CC98D50023966B /* Statement.m */; };
+		4137682526D61C640023966B /* CharStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CB26CBBD9F0023966B /* CharStream.m */; };
+		4137682726D61C640023966B /* Scanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CE26CBBD9F0023966B /* Scanner.m */; };
+		4137682926D61C640023966B /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766CC26CBBD9F0023966B /* Token.m */; };
+		4137682B26D61C640023966B /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137673926CCCC9F0023966B /* Position.m */; };
+		4137682D26D61C640023966B /* Enter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670426CCAE990023966B /* Enter.m */; };
+		4137682F26D61C640023966B /* RefResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670926CCAE990023966B /* RefResolver.m */; };
+		4137683126D61C640023966B /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670726CCAE990023966B /* Symbol.m */; };
+		4137683326D61C640023966B /* SymTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137670226CCAE990023966B /* SymTable.m */; };
+		4137683526D61C640023966B /* Op.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2D4A226CD2E450060E01B /* Op.m */; };
+		4137683726D61C640023966B /* Keyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766D026CBBD9F0023966B /* Keyword.m */; };
+		4137683926D61C640023966B /* TokenKind.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766DE26CBBDF10023966B /* TokenKind.m */; };
+		4137683B26D61C640023966B /* Seperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 413766E326CBC0160023966B /* Seperator.m */; };
+		4137683D26D61C640023966B /* NSMutableArray+GetSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137665D26CBBD660023966B /* NSMutableArray+GetSafe.m */; };
+		4137684026D61C640023966B /* Intepretor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667026CBBD660023966B /* Intepretor.m */; };
+		4137684226D61C640023966B /* LeftValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667226CBBD660023966B /* LeftValue.m */; };
+		4137684426D61C640023966B /* AstVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4137667426CBBD660023966B /* AstVisitor.m */; };
+		4137684D26D61CDD0023966B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4137684C26D61CDD0023966B /* XCTest.framework */; };
+		4137685026D61D2D0023966B /* TestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 413767C026D4F6080023966B /* TestCase.m */; };
 		4E021D7C26D20DF000FD7B08 /* SimpleType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7B26D20DF000FD7B08 /* SimpleType.m */; };
 		4E021D7F26D23E1500FD7B08 /* SysTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D7E26D23E1500FD7B08 /* SysTypes.m */; };
 		4E021D8226D2718A00FD7B08 /* VariableStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E021D8126D2718A00FD7B08 /* VariableStatement.m */; };
@@ -157,10 +207,14 @@
 		4137676726CE48250023966B /* Scope.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scope.h; sourceTree = "<group>"; };
 		4137676826CE48250023966B /* Scope.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Scope.m; sourceTree = "<group>"; };
 		413767BE26D4F6080023966B /* TestCase.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCase.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		413767C026D4F6080023966B /* TestCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCase.m; sourceTree = "<group>"; };
+		413767C026D4F6080023966B /* TestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase.m; sourceTree = "<group>"; };
 		413767C226D4F6080023966B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		413767CA26D4F9DA0023966B /* Unary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unary.h; sourceTree = "<group>"; };
 		413767CB26D4F9DA0023966B /* Unary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Unary.m; sourceTree = "<group>"; };
+		413767CF26D5F3330023966B /* ErrorExp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorExp.h; sourceTree = "<group>"; };
+		413767D026D5F3330023966B /* ErrorExp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErrorExp.m; sourceTree = "<group>"; };
+		413767D426D61B570023966B /* program.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = program.js; sourceTree = "<group>"; };
+		4137684C26D61CDD0023966B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4E021D7A26D20DF000FD7B08 /* SimpleType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleType.h; sourceTree = "<group>"; };
 		4E021D7B26D20DF000FD7B08 /* SimpleType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleType.m; sourceTree = "<group>"; };
 		4E021D7D26D23E1500FD7B08 /* SysTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysTypes.h; sourceTree = "<group>"; };
@@ -183,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4137684D26D61CDD0023966B /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +250,7 @@
 				4137665126CBBD2D0023966B /* play04 */,
 				413767BF26D4F6080023966B /* TestCase */,
 				4137665026CBBD2D0023966B /* Products */,
+				4137684B26D61CDD0023966B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +381,8 @@
 				4E021D8126D2718A00FD7B08 /* VariableStatement.m */,
 				413767CA26D4F9DA0023966B /* Unary.h */,
 				413767CB26D4F9DA0023966B /* Unary.m */,
+				413767CF26D5F3330023966B /* ErrorExp.h */,
+				413767D026D5F3330023966B /* ErrorExp.m */,
 			);
 			path = ast;
 			sourceTree = "<group>";
@@ -392,10 +450,19 @@
 		413767BF26D4F6080023966B /* TestCase */ = {
 			isa = PBXGroup;
 			children = (
+				413767D426D61B570023966B /* program.js */,
 				413767C026D4F6080023966B /* TestCase.m */,
 				413767C226D4F6080023966B /* Info.plist */,
 			);
 			path = TestCase;
+			sourceTree = "<group>";
+		};
+		4137684B26D61CDD0023966B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4137684C26D61CDD0023966B /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413767D526D61B570023966B /* program.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +597,7 @@
 				4137673526CCB0000023966B /* VariableDecl.m in Sources */,
 				4137676426CE439D0023966B /* ForStatement.m in Sources */,
 				413766FD26CC98D60023966B /* FunctionBody.m in Sources */,
+				413767D126D5F3330023966B /* ErrorExp.m in Sources */,
 				4137670B26CCAE990023966B /* Enter.m in Sources */,
 				413766B026CBBD660023966B /* AstVisitor.m in Sources */,
 				4137672C26CCB0000023966B /* FunctionDecl.m in Sources */,
@@ -539,7 +608,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				413767C126D4F6080023966B /* TestCase.m in Sources */,
+				413767E726D61C640023966B /* Scope.m in Sources */,
+				4137685026D61D2D0023966B /* TestCase.m in Sources */,
+				413767E926D61C640023966B /* Binary.m in Sources */,
+				413767EB26D61C640023966B /* BooleanLiteral.m in Sources */,
+				413767ED26D61C640023966B /* DecimalLiteral.m in Sources */,
+				413767EF26D61C640023966B /* Expression.m in Sources */,
+				413767F126D61C640023966B /* ExpressionStatement.m in Sources */,
+				413767F326D61C640023966B /* IntegerLiteral.m in Sources */,
+				413767F526D61C640023966B /* NullLiteral.m in Sources */,
+				413767F726D61C640023966B /* StringLiteral.m in Sources */,
+				413767F926D61C640023966B /* Type.m in Sources */,
+				413767FB26D61C640023966B /* SimpleType.m in Sources */,
+				413767FD26D61C640023966B /* SysTypes.m in Sources */,
+				413767FF26D61C640023966B /* Block.m in Sources */,
+				4137680126D61C640023966B /* Decl.m in Sources */,
+				4137680326D61C640023966B /* FunctionDecl.m in Sources */,
+				4137680526D61C640023966B /* Variable.m in Sources */,
+				4137680726D61C640023966B /* VariableDecl.m in Sources */,
+				4137680926D61C640023966B /* CallSignature.m in Sources */,
+				4137680B26D61C640023966B /* ParameterList.m in Sources */,
+				4137680D26D61C640023966B /* ReturnStatement.m in Sources */,
+				4137680F26D61C640023966B /* IfStatement.m in Sources */,
+				4137681126D61C640023966B /* ForStatement.m in Sources */,
+				4137681326D61C640023966B /* VariableStatement.m in Sources */,
+				4137681526D61C640023966B /* Unary.m in Sources */,
+				4137681726D61C640023966B /* ErrorExp.m in Sources */,
+				4137681926D61C640023966B /* AstNode.m in Sources */,
+				4137681B26D61C640023966B /* FunctionBody.m in Sources */,
+				4137681D26D61C640023966B /* FunctionCall.m in Sources */,
+				4137681F26D61C640023966B /* Parser.m in Sources */,
+				4137682126D61C640023966B /* Prog.m in Sources */,
+				4137682326D61C640023966B /* Statement.m in Sources */,
+				4137682526D61C640023966B /* CharStream.m in Sources */,
+				4137682726D61C640023966B /* Scanner.m in Sources */,
+				4137682926D61C640023966B /* Token.m in Sources */,
+				4137682B26D61C640023966B /* Position.m in Sources */,
+				4137682D26D61C640023966B /* Enter.m in Sources */,
+				4137682F26D61C640023966B /* RefResolver.m in Sources */,
+				4137683126D61C640023966B /* Symbol.m in Sources */,
+				4137683326D61C640023966B /* SymTable.m in Sources */,
+				4137683526D61C640023966B /* Op.m in Sources */,
+				4137683726D61C640023966B /* Keyword.m in Sources */,
+				4137683926D61C640023966B /* TokenKind.m in Sources */,
+				4137683B26D61C640023966B /* Seperator.m in Sources */,
+				4137683D26D61C640023966B /* NSMutableArray+GetSafe.m in Sources */,
+				4137684026D61C640023966B /* Intepretor.m in Sources */,
+				4137684226D61C640023966B /* LeftValue.m in Sources */,
+				4137684426D61C640023966B /* AstVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

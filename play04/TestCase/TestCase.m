@@ -7,6 +7,8 @@
 
 #import <XCTest/XCTest.h>
 #import "Scanner.h"
+#import "Prog.h"
+#import "Parser.h"
 
 @interface TestCase : XCTestCase
 
@@ -23,15 +25,43 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    char fff[] = __FILE__;
+    NSString *path = [NSString stringWithCString:fff encoding:NSUTF8StringEncoding];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[path componentsSeparatedByString:@"/"]];
+    [array removeLastObject];
+    [array addObject:@"program.js"];
+    
+    path = [array componentsJoinedByString:@"/"];
+    
+    NSString *program = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    if (!program) {
+        return;
+    }
+    CharStream *stream = [[CharStream alloc] initWithData:program];
+    // 词法分析
+    Scanner *tokenizer = [[Scanner alloc] initWithStream:stream];
+    Parser *parser = [[Parser alloc] initWithScanner:tokenizer];
+    
+    
+    // 语法分析
+    Prog *prog = [parser parseProg];
+    NSLog(@"-------");
+    
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testThree {
+    NSString *program = @"";
+    CharStream *stream = [[CharStream alloc] initWithData:program];
+    // 词法分析
+    Scanner *tokenizer = [[Scanner alloc] initWithStream:stream];
+    Parser *parser = [[Parser alloc] initWithScanner:tokenizer];
+    
+    
+    // 语法分析
+    Prog *prog = [parser parseProg];
+    
+    
 }
+
 
 @end

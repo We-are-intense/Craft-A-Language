@@ -114,4 +114,27 @@
     }
     return nil;
 }
+
+- (id)visitForStatement:(ForStatement *)stmt additional:(id _Nullable)additional; {
+    if (stmt.initi) {
+        [self visit:stmt.initi additional:additional];
+    }
+    
+    if (stmt.condition) {
+        [self visit:stmt.condition additional:additional];
+    }
+    
+    if (stmt.increment) {
+        [self visit:stmt.increment additional:additional];
+    }
+    
+    [self visit:stmt.stmt additional:additional];
+    
+    return nil;
+}
+
+- (id)visitErrorExp:(ErrorExp *)stmt additional:(id _Nullable)additional {
+    return nil;
+}
+
 @end

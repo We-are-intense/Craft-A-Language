@@ -12,6 +12,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ForStatement : Statement
+///<  Expression | VariableDecl | nil
+@property (nonatomic, strong) id initi;
+@property (nonatomic, strong) Expression *condition;
+@property (nonatomic, strong) Expression *increment;
+@property (nonatomic, strong) Statement *stmt;
+
+- (instancetype)initWithBeginPos:(Position *)beginPos
+                          endPos:(Position *)endPos
+                     isErrorNode:(BOOL)isErrorNode
+                           initi:(id)initi
+                       condition:(Expression *)condition
+                       increment:(Expression *)increment
+                            stmt:(Statement *)stmt;
+
 
 @end
 

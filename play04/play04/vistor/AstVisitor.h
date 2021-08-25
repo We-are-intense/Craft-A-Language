@@ -22,6 +22,8 @@
 #import "CallSignature.h"
 #import "ReturnStatement.h"
 #import "IfStatement.h"
+#import "ForStatement.h"
+#import "ErrorExp.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class Prog;
@@ -49,6 +51,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)visitCallSignature:(CallSignature *)callSignature additional:(id _Nullable)additional;
 - (id)visitReturnStatement:(ReturnStatement *)stmt additional:(id _Nullable)additional;
 - (id)visitIfStatement:(IfStatement *)stmt additional:(id _Nullable)additional;
+- (id)visitForStatement:(ForStatement *)stmt additional:(id _Nullable)additional;
+- (id)visitErrorExp:(ErrorExp *)stmt additional:(id _Nullable)additional;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

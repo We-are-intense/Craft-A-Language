@@ -67,6 +67,9 @@
 #import "SysTypes.h"
 #import "VariableStatement.h"
 #import "Unary.h"
+#import "ErrorExp.h"
+#import "IfStatement.h"
+#import "ForStatement.h"
 
 @interface Parser ()
 
@@ -96,7 +99,7 @@
     NSMutableArray <Statement *> *stmts = [NSMutableArray array];
     Token *t = self.scanner.peek;
     
-    while (t.kind != TokenKind.EOFF && !SEqual(t.text, @"}")) {
+    while (t.kind != TokenKind.EOFF && t.code != Seperator.CloseBrace) { // '}'
         Statement *stmt = [self parseStatement];
         if (stmt) {
             [stmts addObject:stmt];
@@ -681,32 +684,151 @@
     }
     return type;
 }
-#pragma mark 解析If语句 TODO
+#pragma mark 解析 If 语句
 /*
  * 解析If语句
  * ifStatement : 'if' '(' expression ')' statement ('else' statement)? ;
  */
 - (id)parseIfStatement {
+    Position *beginPos = self.scanner.getNextPos;
+    // 跳过 if
+    [self.scanner next];
+    BOOL isErrorNode = NO;
     
-    return nil;
+    // 解析if条件
+    Expression *condition = nil;
+    if (self.scanner.peek.code == Seperator.OpenParen) {  //'('
+        // 跳过 '('
+        [self.scanner next];
+        // 解析if的条件
+        condition = [self parseExpression];
+        
+        if(self.scanner.peek.code == Seperator.CloseParen) {  //')'
+            // 跳过')'
+            [self.scanner next];
+        } else {
+            [self addError:@"Expecting ')' after if condition." pos:self.scanner.getLastPos];
+            [self skip:nil];
+            isErrorNode = YES;
+        }
+    } else {
+        [self addError:@"Expecting '(' after if condition." pos:self.scanner.getLastPos];
+        [self skip:nil];
+        condition = [[ErrorExp alloc] initWithBeginPos:beginPos
+                                                endPos:self.scanner.getLastPos
+                                           isErrorNode:YES];
+    }
+    // 解析 then 语句
+    Statement *stmt = [self parseStatement];
+    // 解析 else 语句
+    Statement *elseStmt = nil;
+    if (self.scanner.peek.code == Keyword.Else) {
+        // 跳过'else'
+        [self.scanner next];
+        elseStmt = [self parseStatement];
+    }
+    return [[IfStatement alloc] initWithBeginPos:beginPos
+                                          endPos:self.scanner.getLastPos
+                                     isErrorNode:isErrorNode
+                                        conditon:condition
+                                            stmt:stmt
+                                        elseStmt:elseStmt];
 }
-#pragma mark 解析For语句 TODO
+#pragma mark 解析For语句
 /*
  * 解析For语句
  * forStatement : 'for' '(' expression? ';' expression? ';' expression? ')' statement ;
  */
 - (id)parseForStatement {
+    Position *beginPos = self.scanner.getNextPos;
+    // 跳过'for'
+    [self.scanner next];
+    BOOL isErrorNode = NO;
     
-    return nil;
+    id initi = nil;
+    Expression *terminate = nil;
+    Expression *increment = nil;
+    
+    if(self.scanner.peek.code == Seperator.OpenParen) {  //'('
+        // 跳过'('
+        [self.scanner next];
+        // init
+        if (self.scanner.peek.code != Seperator.SemiColon) {  //';'
+            if (self.scanner.peek.code == Keyword.Let) {
+                [self.scanner next]; // 跳过'let'
+                initi = [self parseVariableDecl];
+            } else {
+                initi = [self parseExpression];
+            }
+        }
+        
+        // 跳过 ';'
+        if (self.scanner.peek.code == Seperator.SemiColon) {  //';'
+            [self.scanner next];
+        } else {
+            [self addError:@"Expecting ';' after init part of for statement." pos:self.scanner.getLastPos];
+            [self skip:nil];
+            // 跳过后面的';'
+            if (self.scanner.peek.code == Seperator.SemiColon) {  //';'
+                [self.scanner next];
+            }
+            isErrorNode = YES;
+        }
+        // terminate
+        if (self.scanner.peek.code != Seperator.SemiColon) {  //';'
+            terminate = [self parseExpression];
+        }
+        // 跳过 ';'
+        if (self.scanner.peek.code == Seperator.SemiColon) {  //';'
+            [self.scanner next];
+        } else {
+            [self addError:@"Expecting ';' after terminate part of for statement." pos:self.scanner.getLastPos];
+            [self skip:nil];
+            // 跳过后面的';'
+            if (self.scanner.peek.code == Seperator.SemiColon) {  //';'
+                [self.scanner next];
+            }
+            isErrorNode = YES;
+        }
+        // increment
+        if (self.scanner.peek.code != Seperator.CloseParen) {  // ')'
+            increment = [self parseExpression];
+        }
+        
+        // 跳过 ')'
+        if (self.scanner.peek.code == Seperator.CloseParen) {  // ')'
+            [self.scanner next];
+        } else {
+            [self addError:@"Expecting ')' after increment part of for statement." pos:self.scanner.getLastPos];
+            [self skip:nil];
+            // 跳过后面的')'
+            if (self.scanner.peek.code == Seperator.CloseParen) {  //')'
+                [self.scanner next];
+            }
+            isErrorNode = YES;
+        }
+    } else {
+        [self addError:@"Expecting '(' after 'for'." pos:self.scanner.getLastPos];
+        [self skip:nil];
+        isErrorNode = YES;
+    }
+    Statement *stmt = [self parseStatement];
+    return [[ForStatement alloc] initWithBeginPos:beginPos
+                                           endPos:self.scanner.getLastPos
+                                      isErrorNode:isErrorNode
+                                            initi:initi
+                                        condition:terminate
+                                        increment:increment
+                                             stmt:stmt];
 }
 
-#pragma mark 添加语法错误 TODO
+#pragma mark 添加语法错误
 - (void)addError:(NSString *)msg pos:(Position *)pos {
-    
+    NSLog(@"❌❌❌ %@: %@", pos.toString, msg);
 }
-#pragma mark 添加语法报警 TODO
+#pragma mark 添加语法报警
 - (void)addWarning:(NSString *)msg pos:(Position *)pos {
-    
+    NSLog(@"⚠️⚠️⚠️ %@: %@", pos.toString, msg);
 }
 
 #pragma mark - private methods
@@ -762,13 +884,26 @@
     
     return -1;
 }
-#pragma mark skip TODO
+#pragma mark 跳过一些 Token，用于错误恢复，以便继续解析后面 Token
 /*
  * 跳过一些 Token，用于错误恢复，以便继续解析后面 Token
  */
 - (void)skip:( NSArray <NSString *> * _Nullable )seperators {
-    if (!seperators) { return; }
-    
+    Token *t = self.scanner.peek;
+    while (t.kind != TokenKind.EOFF) {
+        if (t.kind == TokenKind.Keyword) {
+            return;
+        } else if (t.kind == TokenKind.Seperator &&
+                   (SEqual(t.text, @",") || SEqual(t.text, @";") ||
+                    SEqual(t.text, @"{") || SEqual(t.text, @"}") ||
+                    SEqual(t.text, @"(") || SEqual(t.text, @")") ||
+                    [seperators containsObject:t.text]) ) {
+            return;
+        } else {
+            [self.scanner next];
+            t = self.scanner.peek;
+        }
+    }
 }
 
 - (SimpleType *)parseType:(NSString * _Nullable)typeName {
